@@ -102,7 +102,7 @@ export default function Index() {
           <div className="grid md:grid-cols-4 gap-8 mb-12">
             <div>
               <div className="mb-4">
-                <BrandLogo className="h-[100px] w-auto" />
+                <BrandLogo className="h-12 w-auto" />
               </div>
               <p className="text-foreground/70 dark:text-white/70 leading-relaxed">
                 Transforming ambitious brands into luxury market leaders through 
