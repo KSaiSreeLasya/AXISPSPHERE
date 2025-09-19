@@ -230,19 +230,14 @@ interface TeamMemberCardProps {
   mousePosition: { x: number; y: number };
 }
 
-function TeamMemberCard({ member, index, isInView, mousePosition }: TeamMemberCardProps) {
+function TeamMemberCard({ member, index, isInView }: Omit<TeamMemberCardProps, 'mousePosition'>) {
   const [isHovered, setIsHovered] = useState(false);
-
-  const parallaxStrength = (index % 2 === 0 ? 1 : -1) * 0.02;
 
   return (
     <motion.div
       initial={{ opacity: 0, y: 50 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.8, delay: 0.6 + index * 0.2 }}
-      style={{
-        transform: `translate(${mousePosition.x * parallaxStrength}px, ${mousePosition.y * parallaxStrength}px)`,
-      }}
       className="group relative"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
