@@ -34,7 +34,10 @@ export default function Index() {
       
       {/* Blog Section */}
       <BlogSection />
-      
+
+      {/* Packages Section */}
+      <PackagesSection />
+
       {/* Contact Section */}
       <section id="contact" className="py-24 bg-background relative overflow-hidden">
         {/* Background Elements */}
