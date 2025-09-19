@@ -209,24 +209,13 @@ export default function AboutSection() {
                   member={member}
                   index={index}
                   isInView={isInView}
-                  mousePosition={mousePosition}
                 />
               ))}
             </div>
 
             {/* Floating Elements */}
-            <motion.div
-              style={{
-                transform: `translate(${mousePosition.x * 0.02}px, ${mousePosition.y * 0.02}px)`,
-              }}
-              className="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-r from-gold-400 to-gold-600 rounded-full opacity-20 blur-xl"
-            />
-            <motion.div
-              style={{
-                transform: `translate(${mousePosition.x * -0.03}px, ${mousePosition.y * -0.03}px)`,
-              }}
-              className="absolute -bottom-4 -left-4 w-12 h-12 bg-gradient-to-r from-platinum-400 to-platinum-600 rounded-full opacity-15 blur-lg"
-            />
+            <div className="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-r from-gold-400 to-gold-600 rounded-full opacity-20 blur-xl" />
+            <div className="absolute -bottom-4 -left-4 w-12 h-12 bg-gradient-to-r from-platinum-400 to-platinum-600 rounded-full opacity-15 blur-lg" />
           </motion.div>
         </div>
       </div>
