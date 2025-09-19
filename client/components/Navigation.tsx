@@ -65,7 +65,7 @@ export default function Navigation({ className = '' }: NavigationProps) {
               whileHover={{ scale: 1.05 }}
               transition={{ type: 'spring', stiffness: 400, damping: 17 }}
             >
-              <BrandLogo className="h-[100px] w-auto" />
+              <BrandLogo className="h-10 w-auto" />
               <div className="ml-3 hidden sm:flex flex-col leading-tight">
                 <span className="text-xs text-foreground/60">Luxury</span>
                 <span className="text-sm md:text-base font-semibold bg-gradient-to-r from-gold-400 to-gold-600 bg-clip-text text-transparent">Redefined</span>
