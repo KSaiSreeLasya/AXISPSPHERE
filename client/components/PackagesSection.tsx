@@ -26,7 +26,7 @@ export default function PackagesSection() {
   const [selected, setSelected] = useState<number | null>(null);
 
   return (
-    <section id="packages" className="py-32 bg-background">
+    <section id="packages" className="py-24 bg-background">
       <div className="container mx-auto px-6 text-center">
         <h2 className="text-4xl md:text-5xl font-bold mb-4">Choose Your AI Marketing Package</h2>
         <p className="text-muted-foreground mb-12">Scalable AI-powered solutions designed to grow with your business needs</p>
