@@ -38,54 +38,59 @@ export default function Index() {
 
       {/* Contact Section */}
       <section id="contact" className="py-24 bg-background relative overflow-hidden">
-        {/* Background Elements */}
-        <div className="absolute inset-0">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-gold-400/10 to-gold-600/10 rounded-full blur-3xl animate-float" />
-          <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-platinum-400/10 to-platinum-600/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
-        </div>
-        
         <div className="container mx-auto px-6 relative z-10">
-          <div className="text-center max-w-4xl mx-auto">
-            <h2 className="text-5xl md:text-6xl font-bold text-foreground mb-6">
-              Ready to{' '}
-              <span className="bg-gradient-to-r from-gold-400 to-gold-600 bg-clip-text text-transparent">
-                Transform
-              </span>{' '}
-              Your Brand?
-            </h2>
-            <p className="text-xl text-foreground/80 leading-relaxed mb-12">
-              Let's create something extraordinary together. Our team is ready to elevate 
-              your brand to new heights with cutting-edge design and strategic innovation.
-            </p>
-            
-            <div className="grid md:grid-cols-3 gap-8 mb-16">
-              <div className="text-center">
-                <div className="text-3xl font-bold text-gold-500 mb-2">24h</div>
-                <div className="text-foreground/80">Response Time</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-gold-500 mb-2">150+</div>
-                <div className="text-foreground/80">Projects Delivered</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-gold-500 mb-2">98%</div>
-                <div className="text-foreground/80">Client Satisfaction</div>
-              </div>
+          <div className="text-center max-w-4xl mx-auto mb-12">
+            <h2 className="text-5xl md:text-6xl font-bold text-foreground mb-6">Ready to Transform Your Marketing?</h2>
+            <p className="text-xl text-foreground/80 leading-relaxed">Get in touch with our AI marketing experts and start your journey to exponential growth.</p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {/* Form */}
+            <div className="lg:col-span-2 bg-card p-8 rounded-2xl border border-border">
+              <form id="contact-form" className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <input name="name" placeholder="Full Name" className="p-3 rounded-md border border-input bg-background" />
+                <input name="email" placeholder="Email Address" className="p-3 rounded-md border border-input bg-background" />
+                <input name="phone" placeholder="Phone" className="p-3 rounded-md border border-input bg-background" />
+                <input name="company" placeholder="Company" className="p-3 rounded-md border border-input bg-background" />
+                <textarea name="goals" placeholder="What are your goals?" className="md:col-span-2 p-3 rounded-md border border-input bg-background h-32" />
+
+                <div className="md:col-span-2 flex justify-start mt-2">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const el = document.querySelector('#contact-form') as HTMLFormElement | null;
+                      if (el) el.reset();
+                      // Optionally open mail client
+                    }}
+                    className="bg-gold-500 text-white px-8 py-3 rounded-full font-semibold"
+                  >
+                    Schedule My Consultation
+                  </button>
+                </div>
+              </form>
             </div>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a 
-                href="mailto:hello@luxurystudio.com"
-                className="bg-gold-500 hover:bg-gold-600 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 hover:shadow-glow-gold inline-flex items-center justify-center"
-              >
-                Start Your Project
-              </a>
-              <a 
-                href="tel:+1234567890"
-                className="border-2 border-foreground/30 bg-transparent hover:bg-foreground/10 text-foreground px-8 py-4 rounded-full text-lg font-semibold backdrop-blur-sm transition-all duration-300 inline-flex items-center justify-center"
-              >
-                Schedule a Call
-              </a>
+
+            {/* Info Boxes */}
+            <div className="space-y-4">
+              <div className="bg-card p-6 rounded-2xl border border-border">
+                <h4 className="font-semibold mb-2">Email</h4>
+                <div className="text-muted-foreground">hello@ai-marketing.studio</div>
+              </div>
+
+              <div className="bg-card p-6 rounded-2xl border border-border">
+                <h4 className="font-semibold mb-2">Call us</h4>
+                <div className="text-muted-foreground">+91 98765 43210</div>
+              </div>
+
+              <div className="bg-card p-6 rounded-2xl border border-border">
+                <h4 className="font-semibold mb-2">Visit us</h4>
+                <div className="text-muted-foreground">Bengaluru • Mumbai • Delhi</div>
+              </div>
+
+              <div className="bg-card p-6 rounded-2xl border border-border">
+                <h4 className="font-semibold mb-2">Business Hours</h4>
+                <div className="text-muted-foreground">Mon–Sat, 9:30 AM – 7:00 PM IST</div>
+              </div>
             </div>
           </div>
         </div>
