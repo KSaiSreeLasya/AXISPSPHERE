@@ -229,7 +229,7 @@ interface TeamMemberCardProps {
   isInView: boolean;
 }
 
-function TeamMemberCard({ member, index, isInView }: Omit<TeamMemberCardProps, 'mousePosition'>) {
+function TeamMemberCard({ member, index, isInView }: TeamMemberCardProps) {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
