@@ -227,7 +227,6 @@ interface TeamMemberCardProps {
   member: TeamMember;
   index: number;
   isInView: boolean;
-  mousePosition: { x: number; y: number };
 }
 
 function TeamMemberCard({ member, index, isInView }: Omit<TeamMemberCardProps, 'mousePosition'>) {
