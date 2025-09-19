@@ -128,11 +128,7 @@ function ServiceCard({ service, index, isInView }: ServiceCardProps) {
 
         {/* Floating Icon */}
         <motion.div
-          style={{
-            transform: isHovered
-              ? `translateZ(50px) translateX(${mousePosition.x * 0.2}px) translateY(${mousePosition.y * 0.2}px)`
-              : 'translateZ(0px)',
-          }}
+          animate={isHovered ? { y: -4 } : { y: 0 }}
           transition={{ type: 'spring', stiffness: 300, damping: 30 }}
           className={`inline-flex p-4 rounded-2xl bg-gradient-to-br ${service.gradient} text-white mb-6 shadow-lg group-hover:shadow-xl transition-shadow duration-300`}
         >
@@ -141,11 +137,7 @@ function ServiceCard({ service, index, isInView }: ServiceCardProps) {
 
         {/* Content */}
         <motion.div
-          style={{
-            transform: isHovered
-              ? `translateZ(30px) translateX(${mousePosition.x * 0.1}px) translateY(${mousePosition.y * 0.1}px)`
-              : 'translateZ(0px)',
-          }}
+          animate={isHovered ? { y: -2 } : { y: 0 }}
           transition={{ type: 'spring', stiffness: 300, damping: 30 }}
         >
           <h3 className="text-2xl font-bold text-foreground mb-4 group-hover:text-gold-600 transition-colors duration-300">
