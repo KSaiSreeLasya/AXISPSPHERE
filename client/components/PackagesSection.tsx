@@ -99,13 +99,14 @@ export default function PackagesSection() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {packages.map((pkg, idx) => (
-            <div key={pkg.title} className={`rounded-2xl border border-border p-8 bg-card shadow ${pkg.featured ? 'transform scale-105 border-gold-500' : ''}`}>
+            <div key={pkg.title} className={`rounded-2xl border border-border p-8 bg-card shadow ${pkg.featured ? 'transform scale-105 border-gold-500' : ''} flex flex-col h-full`}>
               <div className="mb-4">
                 <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-br from-gold-400 to-gold-600 text-white mb-4">★</div>
                 <h3 className="text-2xl font-bold mb-2">{pkg.title}</h3>
                 <div className="text-3xl font-extrabold text-foreground mb-4">{pkg.price} <span className="text-sm font-medium text-muted-foreground">/per month</span></div>
               </div>
-              <ul className="text-sm text-muted-foreground space-y-2 mb-6 text-left">
+
+              <ul className="text-sm text-muted-foreground space-y-2 mb-6 text-left flex-grow">
                 {pkg.bullets.map((b) => (
                   <li key={b}>• {b}</li>
                 ))}
@@ -122,7 +123,7 @@ export default function PackagesSection() {
                 </div>
               )}
 
-              <div className="text-center">
+              <div className="text-center mt-auto">
                 <Button onClick={scrollToContact} className={`${pkg.featured ? 'bg-gold-500 text-white' : 'bg-transparent border'} px-6 py-3 rounded-full`}>
                   Get Started
                 </Button>
