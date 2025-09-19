@@ -1,0 +1,126 @@
+/** @import must precede all other statements */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /**
+   * Brand Theme (Premium)
+   * Tailwind CSS theme mapped to HSL variables consumed by tailwind.config.ts
+   * Primary: #6b2f9b (royal purple)
+   * Secondary: #c1a3f7 (lilac)
+   * Tertiary/Accent: #b6e1ed (aqua)
+  */
+  :root {
+    /* Brand-tinted neutral palette (used as "luxury" scale) */
+    --luxury-50: 270 35% 97%;
+    --luxury-100: 270 30% 94%;
+    --luxury-200: 270 25% 87%;
+    --luxury-300: 270 20% 76%;
+    --luxury-400: 270 18% 62%;
+    --luxury-500: 270 18% 50%;
+    --luxury-600: 270 22% 40%;
+    --luxury-700: 270 28% 30%;
+    --luxury-800: 270 32% 20%;
+    --luxury-900: 270 35% 12%;
+    --luxury-950: 270 40% 8%;
+
+    /* Primary (was "gold"): Royal purple and companions */
+    --gold-50: 261 84% 96%;
+    --gold-100: 261 84% 90%;
+    --gold-200: 261 84% 85%;
+    --gold-300: 261 84% 82%;
+    --gold-400: 261 84% 80%; /* secondary lilac */
+    --gold-500: 273 60% 55%; /* mid purple */
+    --gold-600: 273 54% 40%; /* primary */
+    --gold-700: 273 54% 33%;
+    --gold-800: 273 54% 26%;
+    --gold-900: 273 54% 20%;
+
+    /* Tertiary (was "platinum"): Aqua accent */
+    --platinum-50: 193 60% 96%;
+    --platinum-100: 193 60% 92%;
+    --platinum-200: 193 60% 88%;
+    --platinum-300: 193 60% 85%;
+    --platinum-400: 193 60% 82%;
+    --platinum-500: 193 60% 78%;
+    --platinum-600: 193 60% 72%;
+    --platinum-700: 193 55% 60%;
+    --platinum-800: 193 50% 48%;
+    --platinum-900: 193 45% 38%;
+
+    /* Base Theme (Light Mode) */
+    --background: 0 0% 100%;
+    --foreground: 270 40% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 270 40% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 270 40% 10%;
+
+    --primary: 273 54% 40%; /* royal purple */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 261 84% 90%; /* soft lilac surface */
+    --secondary-foreground: 270 40% 12%;
+
+    --muted: 270 20% 96%;
+    --muted-foreground: 270 18% 46%;
+
+    --accent: 193 60% 82%; /* aqua */
+    --accent-foreground: 270 40% 12%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 270 20% 88%;
+    --input: 270 20% 88%;
+    --ring: 273 54% 40%;
+
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    /* Dark Mode */
+    --background: 270 40% 6%;
+    --foreground: 0 0% 100%;
+
+    --card: 270 35% 8%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 270 35% 8%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 273 54% 40%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 270 28% 14%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 270 28% 14%;
+    --muted-foreground: 270 18% 70%;
+
+    --accent: 193 60% 72%;
+    --accent-foreground: 270 40% 12%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 270 32% 18%;
+    --input: 270 32% 18%;
+    --ring: 273 54% 40%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
