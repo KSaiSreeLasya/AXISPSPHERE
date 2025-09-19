@@ -97,7 +97,7 @@ export default function PackagesSection() {
         <h2 className="text-4xl md:text-5xl font-bold mb-4">Choose Your AI Marketing Package</h2>
         <p className="text-muted-foreground mb-12">Scalable AI-powered solutions designed to grow with your business needs</p>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto items-stretch">
           {packages.map((pkg, idx) => (
             <div key={pkg.title} className={`rounded-2xl border border-border p-8 bg-card shadow ${pkg.featured ? 'transform scale-105 border-gold-500' : ''} flex flex-col h-full`}>
               <div className="mb-4">
