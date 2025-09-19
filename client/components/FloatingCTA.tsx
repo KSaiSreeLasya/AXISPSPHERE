@@ -1,16 +1,15 @@
-'use client';
+"use client";
 
-import { useState, useEffect, useRef } from 'react';
-import { motion, useAnimation, useScroll, useTransform } from 'framer-motion';
-import { MessageCircle, X, ArrowRight } from 'lucide-react';
+import { useState, useEffect, useRef } from "react";
+import { motion, useAnimation, useScroll, useTransform } from "framer-motion";
+import { MessageCircle, X, ArrowRight } from "lucide-react";
 
 export default function FloatingCTA() {
   const [isVisible, setIsVisible] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const buttonRef = useRef<HTMLDivElement>(null);
   const controls = useAnimation();
-  
+
   const { scrollY } = useScroll();
   const y = useTransform(scrollY, [0, 100], [100, 0]);
 
@@ -18,57 +17,28 @@ export default function FloatingCTA() {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
       const windowHeight = window.innerHeight;
-      
       // Show button after scrolling 100vh
       setIsVisible(scrollPosition > windowHeight);
     };
 
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!buttonRef.current) return;
-      
-      const rect = buttonRef.current.getBoundingClientRect();
-      const centerX = rect.left + rect.width / 2;
-      const centerY = rect.top + rect.height / 2;
-      
-      const distance = Math.sqrt(
-        Math.pow(e.clientX - centerX, 2) + Math.pow(e.clientY - centerY, 2)
-      );
-      
-      // Magnetic effect within 100px radius
-      if (distance < 100) {
-        const strength = (100 - distance) / 100;
-        const mouseX = (e.clientX - centerX) * strength * 0.3;
-        const mouseY = (e.clientY - centerY) * strength * 0.3;
-        
-        setMousePosition({ x: mouseX, y: mouseY });
-      } else {
-        setMousePosition({ x: 0, y: 0 });
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    window.addEventListener('mousemove', handleMouseMove);
-    
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('mousemove', handleMouseMove);
-    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => {
     if (isVisible) {
-      controls.start('visible');
+      controls.start("visible");
     } else {
-      controls.start('hidden');
+      controls.start("hidden");
     }
   }, [isVisible, controls]);
 
   const handleClick = () => {
-    const element = document.querySelector('#contact');
+    const element = document.querySelector("#contact");
     if (element) {
-      element.scrollIntoView({ 
-        behavior: 'smooth',
-        block: 'start'
+      element.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
       });
     }
   };
@@ -88,7 +58,7 @@ export default function FloatingCTA() {
       opacity: 1,
       rotate: 0,
       transition: {
-        type: 'spring' as const,
+        type: "spring" as const,
         stiffness: 300,
         damping: 25,
         duration: 0.6,
@@ -117,8 +87,7 @@ export default function FloatingCTA() {
     <motion.div
       ref={buttonRef}
       style={{
-        y: `calc(${y}px + ${mousePosition.y}px)`,
-        x: mousePosition.x,
+        y: y,
       }}
       variants={buttonVariants}
       initial="hidden"
@@ -127,7 +96,7 @@ export default function FloatingCTA() {
     >
       <motion.div
         variants={expandedVariants}
-        animate={isExpanded ? 'expanded' : 'collapsed'}
+        animate={isExpanded ? "expanded" : "collapsed"}
         className="relative group"
       >
         {/* Main Button */}
@@ -138,16 +107,16 @@ export default function FloatingCTA() {
           whileTap={{ scale: 0.95 }}
           animate={{
             boxShadow: [
-              '0 25px 50px -12px rgba(212, 175, 55, 0.25)',
-              '0 25px 50px -12px rgba(212, 175, 55, 0.4)',
-              '0 25px 50px -12px rgba(212, 175, 55, 0.25)',
+              "0 25px 50px -12px rgba(212, 175, 55, 0.25)",
+              "0 25px 50px -12px rgba(212, 175, 55, 0.4)",
+              "0 25px 50px -12px rgba(212, 175, 55, 0.25)",
             ],
           }}
           transition={{
             boxShadow: {
               duration: 2,
               repeat: Infinity,
-              ease: 'easeInOut',
+              ease: "easeInOut",
             },
           }}
         >
@@ -161,7 +130,7 @@ export default function FloatingCTA() {
             transition={{
               duration: 2,
               repeat: Infinity,
-              ease: 'easeInOut',
+              ease: "easeInOut",
             }}
           />
 
@@ -169,15 +138,16 @@ export default function FloatingCTA() {
           <motion.div
             className="absolute inset-0 bg-shimmer opacity-30"
             animate={{
-              x: ['-100%', '100%'],
+              x: ["-100%", "100%"],
             }}
             transition={{
               duration: 2,
               repeat: Infinity,
-              ease: 'linear',
+              ease: "linear",
             }}
             style={{
-              background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent)',
+              background:
+                "linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent)",
             }}
           />
 
@@ -201,7 +171,11 @@ export default function FloatingCTA() {
                 <span>Work With Us</span>
                 <motion.div
                   animate={{ x: [0, 4, 0] }}
-                  transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
+                  transition={{
+                    duration: 1.5,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
                 >
                   <ArrowRight size={20} />
                 </motion.div>
@@ -249,7 +223,7 @@ export default function FloatingCTA() {
           transition={{
             duration: 3,
             repeat: Infinity,
-            ease: 'easeInOut',
+            ease: "easeInOut",
           }}
         />
       </motion.div>
@@ -269,11 +243,11 @@ export default function FloatingCTA() {
               duration: 3,
               repeat: Infinity,
               delay: i * 0.5,
-              ease: 'easeOut',
+              ease: "easeOut",
             }}
             style={{
               left: `${30 + i * 20}%`,
-              top: '50%',
+              top: "50%",
             }}
           />
         ))}
