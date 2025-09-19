@@ -40,7 +40,7 @@ export default function HeroSection() {
     if (element) {
       const header = document.querySelector('header');
       const headerHeight = header ? (header as HTMLElement).offsetHeight : 80;
-      const top = element.getBoundingClientRect().top + window.scrollY - headerHeight - 12;
+      const top = element.getBoundingClientRect().top + window.scrollY - headerHeight + 8;
       window.scrollTo({ top, behavior: 'smooth' });
     }
   };
