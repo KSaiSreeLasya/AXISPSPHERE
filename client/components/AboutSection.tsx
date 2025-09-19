@@ -249,14 +249,14 @@ function TeamMemberCard({ member, index, isInView }: Omit<TeamMemberCardProps, '
             src={member.image}
             alt={member.name}
             className="w-full h-full object-cover transition-transform duration-700"
-            animate={isHovered ? { scale: 1.1 } : { scale: 1 }}
+            animate={isHovered ? { scale: 1.03 } : { scale: 1 }}
           />
-          
+
           {/* Overlay */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: isHovered ? 1 : 0 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.25 }}
             className="absolute inset-0 bg-luxury-900/80 backdrop-blur-sm flex items-end p-6"
           >
             <motion.p
