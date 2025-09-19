@@ -29,6 +29,7 @@ export default function Navigation({ className = '' }: NavigationProps) {
     { name: 'Work', href: '#work' },
     { name: 'About', href: '#about' },
     { name: 'Insights', href: '#insights' },
+    { name: 'Packages', href: '#packages' },
     { name: 'Contact', href: '#contact' },
   ];
 
