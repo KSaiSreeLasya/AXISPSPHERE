@@ -160,7 +160,7 @@ function ServiceCard({ service, index, isInView }: ServiceCardProps) {
                 }}
                 style={{
                   transform: isHovered
-                    ? `translateZ(20px) translateX(${mousePosition.x * 0.05}px)`
+                    ? 'translateZ(20px)'
                     : 'translateZ(0px)',
                 }}
                 className="flex items-center text-sm text-muted-foreground"
