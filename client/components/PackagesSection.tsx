@@ -56,7 +56,7 @@ export default function PackagesSection() {
         </div>
 
         {selected !== null && (
-          <div className="fixed inset-0 z-60 flex items-center justify-center bg-black/60 p-6">
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-6">
             <div className="bg-card rounded-3xl max-w-3xl w-full p-8 overflow-auto">
               <div className="flex justify-between items-start mb-4">
                 <div>
