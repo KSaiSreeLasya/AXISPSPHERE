@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { useRef, useState } from 'react';
-import { motion, useInView } from 'framer-motion';
-import { Calendar, Clock, ArrowRight, Tag } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { useRef, useState } from "react";
+import { motion, useInView } from "framer-motion";
+import { Calendar, Clock, ArrowRight, Tag } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 interface BlogPost {
   id: string;
@@ -23,80 +23,84 @@ interface BlogPost {
 
 const blogPosts: BlogPost[] = [
   {
-    id: '1',
-    title: 'The Future of Luxury Brand Design: 2024 Trends That Matter',
-    excerpt: 'Discover the emerging design trends that are reshaping luxury brand experiences, from neo-brutalism to immersive 3D interfaces.',
+    id: "1",
+    title: "The Future of Luxury Brand Design: 2024 Trends That Matter",
+    excerpt:
+      "Discover the emerging design trends that are reshaping luxury brand experiences, from neo-brutalism to immersive 3D interfaces.",
     author: {
-      name: 'Elena Rodriguez',
-      avatar: '/placeholder.svg',
+      name: "Elena Rodriguez",
+      avatar: "/placeholder.svg",
     },
-    category: 'Design Trends',
-    tags: ['Design', 'Luxury', 'Trends', '2024'],
-    publishDate: '2024-01-15',
-    readTime: '8 min read',
-    image: '/placeholder.svg',
+    category: "Design Trends",
+    tags: ["Design", "Luxury", "Trends", "2024"],
+    publishDate: "2024-01-15",
+    readTime: "8 min read",
+    image: "/placeholder.svg",
     featured: true,
   },
   {
-    id: '2',
-    title: 'Performance Optimization: How We Achieved 99% Core Web Vitals',
-    excerpt: 'A deep dive into the technical strategies and optimization techniques that helped us achieve perfect Core Web Vitals scores.',
+    id: "2",
+    title: "Performance Optimization: How We Achieved 99% Core Web Vitals",
+    excerpt:
+      "A deep dive into the technical strategies and optimization techniques that helped us achieve perfect Core Web Vitals scores.",
     author: {
-      name: 'Marcus Chen',
-      avatar: '/placeholder.svg',
+      name: "Marcus Chen",
+      avatar: "/placeholder.svg",
     },
-    category: 'Development',
-    tags: ['Performance', 'Web Vitals', 'Optimization'],
-    publishDate: '2024-01-10',
-    readTime: '12 min read',
-    image: '/placeholder.svg',
+    category: "Development",
+    tags: ["Performance", "Web Vitals", "Optimization"],
+    publishDate: "2024-01-10",
+    readTime: "12 min read",
+    image: "/placeholder.svg",
     featured: false,
   },
   {
-    id: '3',
-    title: 'Data-Driven Design: Converting Insights into User Experiences',
-    excerpt: 'Learn how we use analytics, user research, and behavioral data to create designs that drive real business results.',
+    id: "3",
+    title: "Data-Driven Design: Converting Insights into User Experiences",
+    excerpt:
+      "Learn how we use analytics, user research, and behavioral data to create designs that drive real business results.",
     author: {
-      name: 'Sophia Williams',
-      avatar: '/placeholder.svg',
+      name: "Sophia Williams",
+      avatar: "/placeholder.svg",
     },
-    category: 'Strategy',
-    tags: ['UX', 'Data', 'Analytics', 'Strategy'],
-    publishDate: '2024-01-05',
-    readTime: '6 min read',
-    image: '/placeholder.svg',
+    category: "Strategy",
+    tags: ["UX", "Data", "Analytics", "Strategy"],
+    publishDate: "2024-01-05",
+    readTime: "6 min read",
+    image: "/placeholder.svg",
     featured: false,
   },
   {
-    id: '4',
-    title: 'Building Trust in Digital Luxury: The Psychology of Premium UX',
-    excerpt: 'Understanding the psychological principles that make users perceive digital experiences as premium and trustworthy.',
+    id: "4",
+    title: "Building Trust in Digital Luxury: The Psychology of Premium UX",
+    excerpt:
+      "Understanding the psychological principles that make users perceive digital experiences as premium and trustworthy.",
     author: {
-      name: 'David Kim',
-      avatar: '/placeholder.svg',
+      name: "David Kim",
+      avatar: "/placeholder.svg",
     },
-    category: 'Psychology',
-    tags: ['Psychology', 'UX', 'Luxury', 'Trust'],
-    publishDate: '2024-01-01',
-    readTime: '10 min read',
-    image: '/placeholder.svg',
+    category: "Psychology",
+    tags: ["Psychology", "UX", "Luxury", "Trust"],
+    publishDate: "2024-01-01",
+    readTime: "10 min read",
+    image: "/placeholder.svg",
     featured: false,
   },
 ];
 
 export default function BlogSection() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-  const featuredPost = blogPosts.find(post => post.featured);
-  const regularPosts = blogPosts.filter(post => !post.featured);
+  const featuredPost = blogPosts.find((post) => post.featured);
+  const regularPosts = blogPosts.filter((post) => !post.featured);
 
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
     if (element) {
-      element.scrollIntoView({ 
-        behavior: 'smooth',
-        block: 'start'
+      element.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
       });
     }
   };
@@ -117,7 +121,7 @@ export default function BlogSection() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-5xl md:text-6xl font-bold text-foreground mb-6"
           >
-            Latest{' '}
+            Latest{" "}
             <span className="bg-gradient-to-r from-gold-400 to-gold-600 bg-clip-text text-transparent">
               Insights
             </span>
@@ -128,7 +132,7 @@ export default function BlogSection() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed"
           >
-            Explore our thoughts on design, technology, and strategy. Stay ahead 
+            Explore our thoughts on design, technology, and strategy. Stay ahead
             of the curve with insights from our team of industry experts.
           </motion.p>
         </motion.div>
@@ -154,9 +158,9 @@ export default function BlogSection() {
             className="space-y-6"
           >
             {regularPosts.map((post, index) => (
-              <BlogPostCard 
-                key={post.id} 
-                post={post} 
+              <BlogPostCard
+                key={post.id}
+                post={post}
                 index={index}
                 isInView={isInView}
               />
@@ -172,7 +176,7 @@ export default function BlogSection() {
           className="text-center mt-16"
         >
           <Button
-            onClick={() => scrollToSection('#contact')}
+            onClick={() => scrollToSection("#contact")}
             variant="outline"
             className="border-2 border-gold-500 text-gold-600 hover:bg-gold-500 hover:text-white px-8 py-3 rounded-full text-lg font-semibold transition-all duration-300 hover:shadow-glow-gold"
           >
@@ -200,7 +204,7 @@ function FeaturedPostCard({ post }: FeaturedPostCardProps) {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       whileHover={{ y: -8 }}
-      transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+      transition={{ type: "spring", stiffness: 300, damping: 30 }}
     >
       {/* Image */}
       <div className="relative aspect-[16/10] overflow-hidden">
@@ -210,7 +214,7 @@ function FeaturedPostCard({ post }: FeaturedPostCardProps) {
           className="w-full h-full object-cover transition-transform duration-700"
           animate={isHovered ? { scale: 1.1 } : { scale: 1 }}
         />
-        
+
         {/* Overlay */}
         <motion.div
           initial={{ opacity: 0 }}
@@ -234,9 +238,9 @@ function FeaturedPostCard({ post }: FeaturedPostCardProps) {
         {/* Read More Button */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ 
+          animate={{
             opacity: isHovered ? 1 : 0,
-            scale: isHovered ? 1 : 0.8 
+            scale: isHovered ? 1 : 0.8,
           }}
           transition={{ duration: 0.3 }}
           className="absolute bottom-6 right-6"
@@ -255,10 +259,10 @@ function FeaturedPostCard({ post }: FeaturedPostCardProps) {
         <div className="flex items-center gap-4 mb-4 text-sm text-muted-foreground">
           <span className="flex items-center gap-1">
             <Calendar size={16} />
-            {new Date(post.publishDate).toLocaleDateString('en-US', { 
-              month: 'short', 
-              day: 'numeric', 
-              year: 'numeric' 
+            {new Date(post.publishDate).toLocaleDateString("en-US", {
+              month: "short",
+              day: "numeric",
+              year: "numeric",
             })}
           </span>
           <span className="flex items-center gap-1">
@@ -299,7 +303,9 @@ function FeaturedPostCard({ post }: FeaturedPostCardProps) {
             className="w-10 h-10 rounded-full object-cover"
           />
           <div>
-            <div className="font-medium text-foreground">{post.author.name}</div>
+            <div className="font-medium text-foreground">
+              {post.author.name}
+            </div>
             <div className="text-sm text-muted-foreground">{post.category}</div>
           </div>
         </div>
@@ -307,12 +313,13 @@ function FeaturedPostCard({ post }: FeaturedPostCardProps) {
 
       {/* Shimmer Effect */}
       <motion.div
-        initial={{ x: '-100%' }}
-        animate={{ x: isHovered ? '100%' : '-100%' }}
-        transition={{ duration: 0.6, ease: 'easeInOut' }}
+        initial={{ x: "-100%" }}
+        animate={{ x: isHovered ? "100%" : "-100%" }}
+        transition={{ duration: 0.6, ease: "easeInOut" }}
         className="absolute inset-0 bg-shimmer opacity-20 pointer-events-none"
         style={{
-          background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent)',
+          background:
+            "linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent)",
         }}
       />
     </motion.article>
@@ -362,9 +369,9 @@ function BlogPostCard({ post, index, isInView }: BlogPostCardProps) {
           </span>
           <span className="flex items-center gap-1">
             <Calendar size={12} />
-            {new Date(post.publishDate).toLocaleDateString('en-US', { 
-              month: 'short', 
-              day: 'numeric' 
+            {new Date(post.publishDate).toLocaleDateString("en-US", {
+              month: "short",
+              day: "numeric",
             })}
           </span>
           <span className="flex items-center gap-1">

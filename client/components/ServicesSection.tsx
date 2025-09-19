@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { useRef, useState } from 'react';
-import { motion, useInView } from 'framer-motion';
-import { Palette, Monitor, TrendingUp, Zap } from 'lucide-react';
+import { useRef, useState } from "react";
+import { motion, useInView } from "framer-motion";
+import { Palette, Monitor, TrendingUp, Zap } from "lucide-react";
 
 interface Service {
   icon: React.ReactNode;
@@ -15,37 +15,56 @@ interface Service {
 const services: Service[] = [
   {
     icon: <Palette size={32} />,
-    title: 'Luxury Branding',
-    description: 'Craft distinctive brand identities that command attention and inspire trust in premium markets.',
-    features: ['Brand Strategy', 'Visual Identity', 'Brand Guidelines', 'Logo Design'],
-    gradient: 'from-gold-400 to-gold-600',
+    title: "Luxury Branding",
+    description:
+      "Craft distinctive brand identities that command attention and inspire trust in premium markets.",
+    features: [
+      "Brand Strategy",
+      "Visual Identity",
+      "Brand Guidelines",
+      "Logo Design",
+    ],
+    gradient: "from-gold-400 to-gold-600",
   },
   {
     icon: <Monitor size={32} />,
-    title: 'Web Design',
-    description: 'Create stunning, conversion-optimized websites that deliver exceptional user experiences.',
-    features: ['UI/UX Design', 'Development', 'E-commerce', 'Mobile-First'],
-    gradient: 'from-platinum-400 to-platinum-600',
+    title: "Web Design",
+    description:
+      "Create stunning, conversion-optimized websites that deliver exceptional user experiences.",
+    features: ["UI/UX Design", "Development", "E-commerce", "Mobile-First"],
+    gradient: "from-platinum-400 to-platinum-600",
   },
   {
     icon: <TrendingUp size={32} />,
-    title: 'Digital Marketing',
-    description: 'Strategic campaigns that elevate your brand presence and drive meaningful engagement.',
-    features: ['Social Strategy', 'Content Creation', 'SEO Optimization', 'Analytics'],
-    gradient: 'from-luxury-400 to-luxury-600',
+    title: "Digital Marketing",
+    description:
+      "Strategic campaigns that elevate your brand presence and drive meaningful engagement.",
+    features: [
+      "Social Strategy",
+      "Content Creation",
+      "SEO Optimization",
+      "Analytics",
+    ],
+    gradient: "from-luxury-400 to-luxury-600",
   },
   {
     icon: <Zap size={32} />,
-    title: 'Performance Campaigns',
-    description: 'Data-driven advertising campaigns that maximize ROI and accelerate business growth.',
-    features: ['PPC Management', 'Conversion Optimization', 'A/B Testing', 'ROI Tracking'],
-    gradient: 'from-gold-500 to-platinum-500',
+    title: "Performance Campaigns",
+    description:
+      "Data-driven advertising campaigns that maximize ROI and accelerate business growth.",
+    features: [
+      "PPC Management",
+      "Conversion Optimization",
+      "A/B Testing",
+      "ROI Tracking",
+    ],
+    gradient: "from-gold-500 to-platinum-500",
   },
 ];
 
 export default function ServicesSection() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
     <section id="services" ref={ref} className="py-24 bg-background">
@@ -63,7 +82,7 @@ export default function ServicesSection() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-5xl md:text-6xl font-bold text-foreground mb-6"
           >
-            Our{' '}
+            Our{" "}
             <span className="bg-gradient-to-r from-gold-400 to-gold-600 bg-clip-text text-transparent">
               Expertise
             </span>
@@ -74,8 +93,9 @@ export default function ServicesSection() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed"
           >
-            We specialize in transforming ambitious brands into luxury market leaders 
-            through strategic design, cutting-edge technology, and data-driven marketing.
+            We specialize in transforming ambitious brands into luxury market
+            leaders through strategic design, cutting-edge technology, and
+            data-driven marketing.
           </motion.p>
         </motion.div>
 
@@ -115,7 +135,7 @@ function ServiceCard({ service, index, isInView }: ServiceCardProps) {
     >
       <motion.div
         animate={isHovered ? { scale: 1.02 } : { scale: 1 }}
-        transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+        transition={{ type: "spring", stiffness: 300, damping: 30 }}
         className="relative bg-card border border-border/50 rounded-3xl p-8 h-full overflow-hidden transition-all duration-500 hover:shadow-luxury group-hover:border-gold-500/30"
       >
         {/* Background Gradient on Hover */}
@@ -129,7 +149,7 @@ function ServiceCard({ service, index, isInView }: ServiceCardProps) {
         {/* Floating Icon */}
         <motion.div
           animate={isHovered ? { y: -4 } : { y: 0 }}
-          transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+          transition={{ type: "spring", stiffness: 300, damping: 30 }}
           className={`inline-flex p-4 rounded-2xl bg-gradient-to-br ${service.gradient} text-white mb-6 shadow-lg group-hover:shadow-xl transition-shadow duration-300`}
         >
           {service.icon}
@@ -138,12 +158,12 @@ function ServiceCard({ service, index, isInView }: ServiceCardProps) {
         {/* Content */}
         <motion.div
           animate={isHovered ? { y: -2 } : { y: 0 }}
-          transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+          transition={{ type: "spring", stiffness: 300, damping: 30 }}
         >
           <h3 className="text-2xl font-bold text-foreground mb-4 group-hover:text-gold-600 transition-colors duration-300">
             {service.title}
           </h3>
-          
+
           <p className="text-muted-foreground mb-6 leading-relaxed">
             {service.description}
           </p>
@@ -154,14 +174,12 @@ function ServiceCard({ service, index, isInView }: ServiceCardProps) {
                 key={feature}
                 initial={{ opacity: 0, x: -20 }}
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
-                transition={{ 
-                  duration: 0.5, 
-                  delay: 0.8 + index * 0.2 + featureIndex * 0.1 
+                transition={{
+                  duration: 0.5,
+                  delay: 0.8 + index * 0.2 + featureIndex * 0.1,
                 }}
                 style={{
-                  transform: isHovered
-                    ? 'translateZ(20px)'
-                    : 'translateZ(0px)',
+                  transform: isHovered ? "translateZ(20px)" : "translateZ(0px)",
                 }}
                 className="flex items-center text-sm text-muted-foreground"
               >
@@ -178,21 +196,22 @@ function ServiceCard({ service, index, isInView }: ServiceCardProps) {
 
         {/* Shimmer Effect */}
         <motion.div
-          initial={{ x: '-100%' }}
-          animate={{ x: isHovered ? '100%' : '-100%' }}
-          transition={{ duration: 0.6, ease: 'easeInOut' }}
+          initial={{ x: "-100%" }}
+          animate={{ x: isHovered ? "100%" : "-100%" }}
+          transition={{ duration: 0.6, ease: "easeInOut" }}
           className="absolute inset-0 bg-shimmer opacity-20"
           style={{
-            background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent)',
+            background:
+              "linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent)",
           }}
         />
 
         {/* Corner Accent */}
         <motion.div
           initial={{ scale: 0, opacity: 0 }}
-          animate={{ 
-            scale: isHovered ? 1 : 0, 
-            opacity: isHovered ? 1 : 0 
+          animate={{
+            scale: isHovered ? 1 : 0,
+            opacity: isHovered ? 1 : 0,
           }}
           transition={{ duration: 0.3 }}
           className={`absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl ${service.gradient} opacity-10 rounded-bl-3xl`}

@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { Button } from '@/components/ui/button';
-import { ArrowRight, Play } from 'lucide-react';
+import { useEffect } from "react";
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { ArrowRight, Play } from "lucide-react";
 
 export default function HeroSection() {
   useEffect(() => {
@@ -38,10 +38,11 @@ export default function HeroSection() {
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
     if (element) {
-      const header = document.querySelector('header');
+      const header = document.querySelector("header");
       const headerHeight = header ? (header as HTMLElement).offsetHeight : 80;
-      const top = element.getBoundingClientRect().top + window.scrollY - headerHeight + 8;
-      window.scrollTo({ top, behavior: 'smooth' });
+      const top =
+        element.getBoundingClientRect().top + window.scrollY - headerHeight + 8;
+      window.scrollTo({ top, behavior: "smooth" });
     }
   };
 
@@ -67,7 +68,7 @@ export default function HeroSection() {
           transition={{
             duration: 22,
             repeat: Infinity,
-            ease: 'linear',
+            ease: "linear",
           }}
         />
 
@@ -80,18 +81,19 @@ export default function HeroSection() {
           transition={{
             duration: 25,
             repeat: Infinity,
-            ease: 'linear',
+            ease: "linear",
           }}
         />
 
         {/* Grid Pattern Overlay */}
         <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0"
-               style={{
-                 backgroundImage: `linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px),
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px),
                                    linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px)`,
-                 backgroundSize: '100px 100px',
-               }}
+              backgroundSize: "100px 100px",
+            }}
           />
         </div>
       </motion.div>
@@ -122,8 +124,8 @@ export default function HeroSection() {
             className="text-xl md:text-2xl text-foreground/80 max-w-3xl mx-auto mt-[2px] mb-12 leading-relaxed"
           >
             We craft extraordinary digital experiences that elevate brands into
-            luxury territory. From strategic branding to cutting-edge web design,
-            we transform visions into cinematic reality.
+            luxury territory. From strategic branding to cutting-edge web
+            design, we transform visions into cinematic reality.
           </motion.p>
 
           {/* CTA Buttons */}
@@ -135,12 +137,15 @@ export default function HeroSection() {
           >
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Button
-                onClick={() => scrollToSection('#services')}
+                onClick={() => scrollToSection("#services")}
                 className="relative bg-gold-500 hover:bg-gold-600 text-white px-8 py-4 rounded-full text-lg font-semibold overflow-hidden group transition-all duration-300 hover:shadow-glow-gold"
               >
                 <span className="relative z-10 flex items-center gap-2">
                   Start Your Journey
-                  <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform duration-300" />
+                  <ArrowRight
+                    size={20}
+                    className="group-hover:translate-x-1 transition-transform duration-300"
+                  />
                 </span>
               </Button>
             </motion.div>
@@ -157,7 +162,6 @@ export default function HeroSection() {
               </Button>
             </motion.div>
           </motion.div>
-
         </motion.div>
       </div>
     </section>
