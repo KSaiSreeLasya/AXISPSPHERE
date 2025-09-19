@@ -110,6 +110,18 @@ export default function PackagesSection() {
                   <li key={b}>• {b}</li>
                 ))}
               </ul>
+
+              {pkg.successMetrics && (
+                <div className="bg-background/50 p-4 rounded-lg border border-border mb-6">
+                  <div className="font-semibold mb-2">Success Metrics Target:</div>
+                  <ul className="text-sm text-muted-foreground space-y-1 text-left">
+                    {pkg.successMetrics.map((m) => (
+                      <li key={m}>• {m}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
               <div className="text-center">
                 <Button onClick={scrollToContact} className={`${pkg.featured ? 'bg-gold-500 text-white' : 'bg-transparent border'} px-6 py-3 rounded-full`}>
                   Get Started
