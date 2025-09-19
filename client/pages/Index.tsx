@@ -7,6 +7,7 @@ import AboutSection from '@/components/AboutSection';
 import BlogSection from '@/components/BlogSection';
 import FloatingCTA from '@/components/FloatingCTA';
 import BrandLogo from '@/components/BrandLogo';
+import FloatingTagline from '@/components/FloatingTagline';
 
 export default function Index() {
   return (
