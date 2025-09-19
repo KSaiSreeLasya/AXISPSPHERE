@@ -85,7 +85,7 @@ export default function AboutSection() {
   const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
 
   return (
-    <section id="about" ref={ref} className="py-32 bg-gradient-to-b from-background to-luxury-50/30 relative overflow-hidden">
+    <section id="about" ref={ref} className="py-24 bg-gradient-to-b from-background to-luxury-50/30 relative overflow-hidden">
       {/* Background Elements */}
       <motion.div
         style={{ y, opacity }}
