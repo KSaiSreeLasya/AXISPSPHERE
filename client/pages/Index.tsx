@@ -12,7 +12,6 @@ import BrandLogo from '@/components/BrandLogo';
 export default function Index() {
   return (
     <div className="min-h-screen bg-background">
-      <FloatingTagline />
       {/* Navigation */}
       <Navigation />
       
