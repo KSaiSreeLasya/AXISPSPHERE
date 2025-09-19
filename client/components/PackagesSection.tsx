@@ -23,7 +23,15 @@ export default function PackagesSection() {
     },
   ];
 
-  const [selected, setSelected] = useState<number | null>(null);
+  const scrollToContact = () => {
+    const element = document.querySelector('#contact');
+    if (element) {
+      const header = document.querySelector('header');
+      const headerHeight = header ? (header as HTMLElement).offsetHeight : 80;
+      const top = element.getBoundingClientRect().top + window.scrollY - headerHeight + 8;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+  };
 
   return (
     <section id="packages" className="py-24 bg-background">
@@ -33,7 +41,7 @@ export default function PackagesSection() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {packages.map((pkg, idx) => (
-            <div key={pkg.title} onClick={() => setSelected(idx)} className={`cursor-pointer rounded-2xl border border-border p-8 bg-card shadow ${pkg.featured ? 'transform scale-105 border-gold-500' : ''}`}>
+            <div key={pkg.title} className={`rounded-2xl border border-border p-8 bg-card shadow ${pkg.featured ? 'transform scale-105 border-gold-500' : ''}`}>
               <div className="mb-4">
                 <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-br from-gold-400 to-gold-600 text-white mb-4">★</div>
                 <h3 className="text-2xl font-bold mb-2">{pkg.title}</h3>
@@ -45,37 +53,13 @@ export default function PackagesSection() {
                 ))}
               </ul>
               <div className="text-center">
-                <Button onClick={() => setSelected(idx)} className={`${pkg.featured ? 'bg-gold-500 text-white' : 'bg-transparent border'} px-6 py-3 rounded-full`}>
-                  View Details
+                <Button onClick={scrollToContact} className={`${pkg.featured ? 'bg-gold-500 text-white' : 'bg-transparent border'} px-6 py-3 rounded-full`}>
+                  Get Started
                 </Button>
               </div>
             </div>
           ))}
         </div>
-
-        {selected !== null && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-6">
-            <div className="bg-card rounded-3xl max-w-3xl w-full p-8 overflow-auto">
-              <div className="flex justify-between items-start mb-4">
-                <div>
-                  <h3 className="text-2xl font-bold">{packages[selected].title}</h3>
-                  <div className="text-xl text-foreground/80">{packages[selected].price} <span className="text-sm text-muted-foreground">/per month</span></div>
-                </div>
-                <button onClick={() => setSelected(null)} className="text-muted-foreground">Close</button>
-              </div>
-
-              <ul className="text-sm text-muted-foreground space-y-2 mb-6 text-left">
-                {packages[selected].bullets.map((b) => (
-                  <li key={b}>• {b}</li>
-                ))}
-              </ul>
-
-              <div className="text-right">
-                <Button onClick={() => setSelected(null)} className="bg-gold-500 text-white px-6 py-3 rounded-full">Get Started</Button>
-              </div>
-            </div>
-          </div>
-        )}
 
       </div>
     </section>
