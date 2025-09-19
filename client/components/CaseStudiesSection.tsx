@@ -224,16 +224,17 @@ interface CaseStudyCardProps {
   onLeave: () => void;
 }
 
-function CaseStudyCard({
+const CaseStudyCard = forwardRef<HTMLDivElement, CaseStudyCardProps>(function CaseStudyCard({
   study,
   index,
   isInView,
   isHovered,
   onHover,
   onLeave,
-}: CaseStudyCardProps) {
+}, ref) {
   return (
     <motion.div
+      ref={ref}
       layout
       initial={{ opacity: 0, y: 50 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -357,4 +358,4 @@ function CaseStudyCard({
       </div>
     </motion.div>
   );
-}
+});
