@@ -99,7 +99,7 @@ export default function PackagesSection() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto items-stretch">
           {packages.map((pkg, idx) => (
-            <div key={pkg.title} className={`rounded-2xl border border-border p-8 bg-card shadow ${pkg.featured ? 'transform scale-105 border-gold-500' : ''} flex flex-col h-full`}>
+            <div key={pkg.title} className={`rounded-2xl border border-border p-8 bg-card shadow ${pkg.featured ? 'border-gold-500' : ''} flex flex-col h-full min-h-[420px]`}>
               <div className="mb-4">
                 <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-br from-gold-400 to-gold-600 text-white mb-4">★</div>
                 <h3 className="text-2xl font-bold mb-2">{pkg.title}</h3>
