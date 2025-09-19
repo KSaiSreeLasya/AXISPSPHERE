@@ -224,138 +224,136 @@ interface CaseStudyCardProps {
   onLeave: () => void;
 }
 
-const CaseStudyCard = forwardRef<HTMLDivElement, CaseStudyCardProps>(function CaseStudyCard({
-  study,
-  index,
-  isInView,
-  isHovered,
-  onHover,
-  onLeave,
-}, ref) {
-  return (
-    <motion.div
-      ref={ref}
-      layout
-      initial={{ opacity: 0, y: 50 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      exit={{ opacity: 0, scale: 0.8 }}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
-      className="group relative bg-card rounded-2xl overflow-hidden border border-border/50 hover:border-gold-500/30 transition-all duration-500 hover:shadow-luxury"
-      onMouseEnter={onHover}
-      onMouseLeave={onLeave}
-    >
-      {/* Image Container */}
-      <div className="relative aspect-[4/3] overflow-hidden">
-        <motion.img
-          src={study.image}
-          alt={study.title}
-          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-          initial={{ scale: 1.1 }}
-          animate={{ scale: isHovered ? 1.15 : 1 }}
-          transition={{ duration: 0.7 }}
-        />
+const CaseStudyCard = forwardRef<HTMLDivElement, CaseStudyCardProps>(
+  function CaseStudyCard(
+    { study, index, isInView, isHovered, onHover, onLeave },
+    ref,
+  ) {
+    return (
+      <motion.div
+        ref={ref}
+        layout
+        initial={{ opacity: 0, y: 50 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        exit={{ opacity: 0, scale: 0.8 }}
+        transition={{ duration: 0.6, delay: index * 0.1 }}
+        className="group relative bg-card rounded-2xl overflow-hidden border border-border/50 hover:border-gold-500/30 transition-all duration-500 hover:shadow-luxury"
+        onMouseEnter={onHover}
+        onMouseLeave={onLeave}
+      >
+        {/* Image Container */}
+        <div className="relative aspect-[4/3] overflow-hidden">
+          <motion.img
+            src={study.image}
+            alt={study.title}
+            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+            initial={{ scale: 1.1 }}
+            animate={{ scale: isHovered ? 1.15 : 1 }}
+            transition={{ duration: 0.7 }}
+          />
 
-        {/* Overlay */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: isHovered ? 1 : 0 }}
-          transition={{ duration: 0.3 }}
-          className="absolute inset-0 bg-luxury-900/80 backdrop-blur-sm flex items-center justify-center"
-        >
+          {/* Overlay */}
           <motion.div
-            initial={{ scale: 0, rotate: -90 }}
-            animate={{
-              scale: isHovered ? 1 : 0,
-              rotate: isHovered ? 0 : -90,
-            }}
-            transition={{ duration: 0.5, type: "spring", stiffness: 300 }}
-            className="bg-gold-500 text-white p-4 rounded-full shadow-glow-gold"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: isHovered ? 1 : 0 }}
+            transition={{ duration: 0.3 }}
+            className="absolute inset-0 bg-luxury-900/80 backdrop-blur-sm flex items-center justify-center"
           >
-            <Play size={24} className="fill-current" />
-          </motion.div>
-        </motion.div>
-
-        {/* Category Badge */}
-        <div className="absolute top-4 left-4">
-          <motion.span
-            initial={{ opacity: 0, x: -20 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
-            className="bg-gold-500/90 text-white px-3 py-1 rounded-full text-xs font-semibold backdrop-blur-sm"
-          >
-            {study.category}
-          </motion.span>
-        </div>
-      </div>
-
-      {/* Content */}
-      <div className="p-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-        >
-          <div className="flex items-start justify-between mb-3">
-            <div>
-              <h3 className="text-xl font-bold text-foreground mb-1 group-hover:text-gold-600 transition-colors duration-300">
-                {study.title}
-              </h3>
-              <p className="text-sm text-muted-foreground">{study.client}</p>
-            </div>
             <motion.div
-              whileHover={{ scale: 1.1 }}
-              className="text-muted-foreground hover:text-gold-500 transition-colors duration-300"
+              initial={{ scale: 0, rotate: -90 }}
+              animate={{
+                scale: isHovered ? 1 : 0,
+                rotate: isHovered ? 0 : -90,
+              }}
+              transition={{ duration: 0.5, type: "spring", stiffness: 300 }}
+              className="bg-gold-500 text-white p-4 rounded-full shadow-glow-gold"
             >
-              <ExternalLink size={18} />
+              <Play size={24} className="fill-current" />
             </motion.div>
+          </motion.div>
+
+          {/* Category Badge */}
+          <div className="absolute top-4 left-4">
+            <motion.span
+              initial={{ opacity: 0, x: -20 }}
+              animate={isInView ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
+              className="bg-gold-500/90 text-white px-3 py-1 rounded-full text-xs font-semibold backdrop-blur-sm"
+            >
+              {study.category}
+            </motion.span>
           </div>
+        </div>
 
-          <p className="text-muted-foreground text-sm leading-relaxed mb-4">
-            {study.description}
-          </p>
-
-          {/* Tags */}
-          <div className="flex flex-wrap gap-2 mb-4">
-            {study.tags.map((tag, tagIndex) => (
-              <motion.span
-                key={tag}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                transition={{
-                  duration: 0.3,
-                  delay: 0.4 + index * 0.1 + tagIndex * 0.05,
-                }}
-                className="bg-muted text-muted-foreground px-2 py-1 rounded-md text-xs"
-              >
-                {tag}
-              </motion.span>
-            ))}
-          </div>
-
-          {/* Results */}
-          <div className="flex gap-4">
-            {study.results.map((result, resultIndex) => (
+        {/* Content */}
+        <div className="p-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
+          >
+            <div className="flex items-start justify-between mb-3">
+              <div>
+                <h3 className="text-xl font-bold text-foreground mb-1 group-hover:text-gold-600 transition-colors duration-300">
+                  {study.title}
+                </h3>
+                <p className="text-sm text-muted-foreground">{study.client}</p>
+              </div>
               <motion.div
-                key={result.metric}
-                initial={{ opacity: 0, y: 10 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{
-                  duration: 0.5,
-                  delay: 0.5 + index * 0.1 + resultIndex * 0.1,
-                }}
-                className="text-center"
+                whileHover={{ scale: 1.1 }}
+                className="text-muted-foreground hover:text-gold-500 transition-colors duration-300"
               >
-                <div className="text-lg font-bold text-gold-600">
-                  {result.value}
-                </div>
-                <div className="text-xs text-muted-foreground">
-                  {result.metric}
-                </div>
+                <ExternalLink size={18} />
               </motion.div>
-            ))}
-          </div>
-        </motion.div>
-      </div>
-    </motion.div>
-  );
-});
+            </div>
+
+            <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+              {study.description}
+            </p>
+
+            {/* Tags */}
+            <div className="flex flex-wrap gap-2 mb-4">
+              {study.tags.map((tag, tagIndex) => (
+                <motion.span
+                  key={tag}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                  transition={{
+                    duration: 0.3,
+                    delay: 0.4 + index * 0.1 + tagIndex * 0.05,
+                  }}
+                  className="bg-muted text-muted-foreground px-2 py-1 rounded-md text-xs"
+                >
+                  {tag}
+                </motion.span>
+              ))}
+            </div>
+
+            {/* Results */}
+            <div className="flex gap-4">
+              {study.results.map((result, resultIndex) => (
+                <motion.div
+                  key={result.metric}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{
+                    duration: 0.5,
+                    delay: 0.5 + index * 0.1 + resultIndex * 0.1,
+                  }}
+                  className="text-center"
+                >
+                  <div className="text-lg font-bold text-gold-600">
+                    {result.value}
+                  </div>
+                  <div className="text-xs text-muted-foreground">
+                    {result.metric}
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </motion.div>
+    );
+  },
+);
