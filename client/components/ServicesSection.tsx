@@ -102,26 +102,7 @@ interface ServiceCardProps {
 }
 
 function ServiceCard({ service, index, isInView }: ServiceCardProps) {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-    const mouseX = e.clientX - centerX;
-    const mouseY = e.clientY - centerY;
-
-    setMousePosition({
-      x: mouseX * 0.1,
-      y: mouseY * 0.1,
-    });
-  };
-
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-    setMousePosition({ x: 0, y: 0 });
-  };
 
   return (
     <motion.div
@@ -129,16 +110,11 @@ function ServiceCard({ service, index, isInView }: ServiceCardProps) {
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.8, delay: 0.6 + index * 0.2 }}
       className="group relative"
-      onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={handleMouseLeave}
+      onMouseLeave={() => setIsHovered(false)}
     >
       <motion.div
-        style={{
-          transform: isHovered
-            ? `perspective(1000px) rotateX(${-mousePosition.y * 0.1}deg) rotateY(${mousePosition.x * 0.1}deg) translateZ(0)`
-            : 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0)',
-        }}
+        animate={isHovered ? { scale: 1.02 } : { scale: 1 }}
         transition={{ type: 'spring', stiffness: 300, damping: 30 }}
         className="relative bg-card border border-border/50 rounded-3xl p-8 h-full overflow-hidden transition-all duration-500 hover:shadow-luxury group-hover:border-gold-500/30"
       >
