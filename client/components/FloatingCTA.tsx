@@ -87,8 +87,7 @@ export default function FloatingCTA() {
     <motion.div
       ref={buttonRef}
       style={{
-        y: `calc(${y}px + ${mousePosition.y}px)`,
-        x: mousePosition.x,
+        y: y,
       }}
       variants={buttonVariants}
       initial="hidden"
