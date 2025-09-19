@@ -7,10 +7,9 @@ import { MessageCircle, X, ArrowRight } from 'lucide-react';
 export default function FloatingCTA() {
   const [isVisible, setIsVisible] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const buttonRef = useRef<HTMLDivElement>(null);
   const controls = useAnimation();
-  
+
   const { scrollY } = useScroll();
   const y = useTransform(scrollY, [0, 100], [100, 0]);
 
@@ -18,41 +17,12 @@ export default function FloatingCTA() {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
       const windowHeight = window.innerHeight;
-      
       // Show button after scrolling 100vh
       setIsVisible(scrollPosition > windowHeight);
     };
 
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!buttonRef.current) return;
-      
-      const rect = buttonRef.current.getBoundingClientRect();
-      const centerX = rect.left + rect.width / 2;
-      const centerY = rect.top + rect.height / 2;
-      
-      const distance = Math.sqrt(
-        Math.pow(e.clientX - centerX, 2) + Math.pow(e.clientY - centerY, 2)
-      );
-      
-      // Magnetic effect within 100px radius
-      if (distance < 100) {
-        const strength = (100 - distance) / 100;
-        const mouseX = (e.clientX - centerX) * strength * 0.3;
-        const mouseY = (e.clientY - centerY) * strength * 0.3;
-        
-        setMousePosition({ x: mouseX, y: mouseY });
-      } else {
-        setMousePosition({ x: 0, y: 0 });
-      }
-    };
-
     window.addEventListener('scroll', handleScroll);
-    window.addEventListener('mousemove', handleMouseMove);
-    
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('mousemove', handleMouseMove);
-    };
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   useEffect(() => {
