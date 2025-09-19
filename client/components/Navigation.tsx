@@ -38,7 +38,7 @@ export default function Navigation({ className = '' }: NavigationProps) {
     if (element) {
       const header = document.querySelector('header');
       const headerHeight = header ? (header as HTMLElement).offsetHeight : 80;
-      const top = element.getBoundingClientRect().top + window.scrollY - headerHeight - 12;
+      const top = element.getBoundingClientRect().top + window.scrollY - headerHeight + 8;
       window.scrollTo({ top, behavior: 'smooth' });
     }
     setIsMobileMenuOpen(false);
