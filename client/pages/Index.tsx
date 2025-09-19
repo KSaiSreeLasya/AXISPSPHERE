@@ -5,6 +5,7 @@ import CaseStudiesSection from '@/components/CaseStudiesSection';
 import TestimonialsSection from '@/components/TestimonialsSection';
 import AboutSection from '@/components/AboutSection';
 import BlogSection from '@/components/BlogSection';
+import PackagesSection from '@/components/PackagesSection';
 import FloatingCTA from '@/components/FloatingCTA';
 import BrandLogo from '@/components/BrandLogo';
 import FloatingTagline from '@/components/FloatingTagline';
