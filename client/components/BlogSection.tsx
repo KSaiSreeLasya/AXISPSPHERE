@@ -102,7 +102,7 @@ export default function BlogSection() {
   };
 
   return (
-    <section id="insights" ref={ref} className="py-32 bg-background">
+    <section id="insights" ref={ref} className="py-24 bg-background">
       <div className="container mx-auto px-6">
         {/* Section Header */}
         <motion.div
