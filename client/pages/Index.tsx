@@ -364,7 +364,7 @@ export default function Index() {
 
           <div className="border-t border-border pt-8 flex flex-col md:flex-row justify-between items-center">
             <div className="text-foreground/60 dark:text-white/60 text-sm">
-              © 2024 LuxuryStudio. All rights reserved.
+              © 2024 Axisphere Media Work. All rights reserved.
             </div>
             <div className="flex gap-6 text-foreground/60 dark:text-white/60 text-sm">
               <a href="#" className="hover:text-gold-400 transition-colors">
