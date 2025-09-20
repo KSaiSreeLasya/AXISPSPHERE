@@ -107,7 +107,7 @@ export default function AboutSection() {
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8 }}
-            className="space-y-8"
+            className="space-y-8 bg-card/60 border border-border/50 rounded-3xl p-8 backdrop-blur-sm shadow-glow"
           >
             <motion.div
               initial={{ opacity: 0, y: 30 }}
