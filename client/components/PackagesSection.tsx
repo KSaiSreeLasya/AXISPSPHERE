@@ -9,6 +9,7 @@ export default function PackagesSection() {
     {
       title: "AI Starter Package",
       price: "₹30,000",
+      icon: <Wand2 size={20} className="text-white" />,
       bullets: [
         "20 AI-generated social media posts per month",
         "4 AI-optimized blog articles (800-1200 words each)",
