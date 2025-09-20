@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Play } from "lucide-react";
+import { ArrowRight, Play, TrendingUp, Hourglass, Headphones } from "lucide-react";
 
 export default function HeroSection() {
   useEffect(() => {
@@ -172,6 +172,44 @@ export default function HeroSection() {
                   Watch Our Story
                 </span>
               </Button>
+            </motion.div>
+          </motion.div>
+
+          {/* Stats Row */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1, duration: 0.6 }}
+            className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl mx-auto"
+          >
+            <motion.div whileHover={{ scale: 1.02 }} className="flex items-center justify-between rounded-2xl px-5 py-4 bg-white/60 dark:bg-white/5 border border-gold-500/20 shadow-sm backdrop-blur-sm">
+              <div className="flex items-center gap-3 text-left">
+                <div className="w-9 h-9 rounded-full bg-gold-500/15 flex items-center justify-center text-gold-600">
+                  <TrendingUp size={18} />
+                </div>
+                <div className="text-sm text-foreground/80">Increase in Conversions</div>
+              </div>
+              <div className="text-right font-bold text-foreground">25–40%</div>
+            </motion.div>
+
+            <motion.div whileHover={{ scale: 1.02 }} className="flex items-center justify-between rounded-2xl px-5 py-4 bg-white/60 dark:bg-white/5 border border-gold-500/20 shadow-sm backdrop-blur-sm">
+              <div className="flex items-center gap-3 text-left">
+                <div className="w-9 h-9 rounded-full bg-gold-500/15 flex items-center justify-center text-gold-600">
+                  <Hourglass size={18} />
+                </div>
+                <div className="text-sm text-foreground/80">More Qualified Leads</div>
+              </div>
+              <div className="text-right font-bold text-foreground">3–5×</div>
+            </motion.div>
+
+            <motion.div whileHover={{ scale: 1.02 }} className="flex items-center justify-between rounded-2xl px-5 py-4 bg-white/60 dark:bg-white/5 border border-gold-500/20 shadow-sm backdrop-blur-sm">
+              <div className="flex items-center gap-3 text-left">
+                <div className="w-9 h-9 rounded-full bg-gold-500/15 flex items-center justify-center text-gold-600">
+                  <Headphones size={18} />
+                </div>
+                <div className="text-sm text-foreground/80">Expert Support</div>
+              </div>
+              <div className="text-right font-bold text-foreground">24/7</div>
             </motion.div>
           </motion.div>
         </motion.div>
