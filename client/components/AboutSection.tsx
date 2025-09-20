@@ -124,7 +124,7 @@ export default function AboutSection() {
                 </span>
               </h2>
               <p className="text-xl text-muted-foreground leading-relaxed">
-                Founded in 2018, LuxuryStudio emerged from a simple belief:
+                Founded in 2018, Axisphere Media Work LLP emerged from a simple belief:
                 exceptional brands deserve exceptional digital experiences. What
                 started as a boutique design studio has evolved into a
                 full-service creative agency, trusted by industry leaders
