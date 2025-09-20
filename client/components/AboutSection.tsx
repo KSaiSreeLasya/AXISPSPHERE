@@ -193,7 +193,7 @@ export default function AboutSection() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
-                    className="group"
+                    className="group rounded-xl border border-border/50 bg-background/60 p-4 hover:border-gold-500/40 transition-colors duration-300"
                   >
                     <div className="flex items-start space-x-3">
                       <div className="text-gold-500 group-hover:text-gold-600 transition-colors duration-300">
