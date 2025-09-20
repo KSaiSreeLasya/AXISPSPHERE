@@ -160,11 +160,7 @@ export default function PackagesSection() {
                 <div className="text-center mt-auto">
                   <Button
                     onClick={scrollToContact}
-                    className={`px-6 py-3 rounded-full ${
-                      pkg.featured
-                        ? "bg-gold-500 text-white hover:bg-gold-600"
-                        : "bg-transparent border hover:bg-gold-500/10"
-                    }`}
+                    className="px-6 py-3 rounded-full bg-gold-500 text-white hover:bg-gold-600 shadow-glow-gold"
                   >
                     Get Started
                   </Button>
