@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Check, Star } from "lucide-react";
+import { Check, Wand2, Rocket, Gem } from "lucide-react";
 
 export default function PackagesSection() {
   const packages = [
