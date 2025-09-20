@@ -59,6 +59,7 @@ export default function PackagesSection() {
     {
       title: "AI Enterprise Package",
       price: "₹1,50,000",
+      icon: <Gem size={20} className="text-white" />,
       bullets: [
         "100+ AI-generated social media posts per month",
         "15 AI-optimized long-form content pieces with advanced SEO",
