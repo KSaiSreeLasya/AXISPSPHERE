@@ -93,7 +93,7 @@ export default function PackagesSection() {
   };
 
   return (
-    <section id="packages" className="py-24 bg-background">
+    <section id="packages" className="pt-20 pb-24 bg-background">
       <div className="container mx-auto px-6 text-center">
         <h2 className="text-4xl md:text-5xl font-bold mb-4">
           Choose Your AI Marketing Package
