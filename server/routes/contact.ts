@@ -26,7 +26,7 @@ export const handleContact: RequestHandler = async (req, res) => {
 
   try {
     const url = `${SUPA_URL.replace(/\/$/, "")}/rest/v1/contact_messages`;
-    const response = await fetch(url, {
+    const response = await (globalThis as any).fetch(url, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
