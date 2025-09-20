@@ -92,7 +92,7 @@ export default function AboutSection() {
     <section
       id="about"
       ref={ref}
-      className="pt-[20] py-24 bg-gradient-to-b from-background to-luxury-50/30 relative overflow-hidden"
+      className="py-24 bg-gradient-to-b from-background to-luxury-50/30 relative overflow-hidden"
     >
       {/* Background Elements */}
       <motion.div style={{ y, opacity }} className="absolute inset-0 z-0">
