@@ -66,10 +66,7 @@ export default function Navigation({ className = "" }: NavigationProps) {
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
             >
-              <BrandLogo className="h-14 w-auto" />
-              <span className="hidden sm:inline-block text-2xl md:text-3xl font-bold tracking-wide text-foreground">
-                Axisphere
-              </span>
+              <BrandLogo className="h-20 w-auto" />
             </motion.a>
 
             {/* Desktop Navigation */}
