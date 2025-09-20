@@ -65,21 +65,18 @@ export default function Index() {
           const clone = res.clone();
           const ct = clone.headers.get('content-type') || '';
           bodyText = await clone.text();
-          // if it's JSON, pretty-print
           if (ct.includes('application/json')) {
             try {
               const parsed = JSON.parse(bodyText);
               bodyText = JSON.stringify(parsed);
-            } catch (_) {
-              // leave as-is
-            }
+            } catch (_) {}
           }
         } catch (readErr) {
           bodyText = `(failed to read response body: ${String(readErr)})`;
         }
         const maskedKey = SUPA_KEY ? `${SUPA_KEY.slice(0,6)}...${SUPA_KEY.slice(-6)}` : null;
         const errMsg = `HTTP ${res.status} ${res.statusText} - ${bodyText}`;
-        console.error('Supabase REST error', { url, status: res.status, body: bodyText, supabase_key_preview: maskedKey });
+        console.error('Supabase REST error', { endpoint: '/api/contact', status: res.status, body: bodyText, supabase_key_preview: maskedKey });
         throw new Error(errMsg);
       }
 
@@ -131,7 +128,7 @@ export default function Index() {
       {/* Contact Section */}
       <section
         id="contact"
-        className="py-24 bg-background relative overflow-hidden"
+        className="pt-20 pb-24 bg-background relative overflow-hidden"
       >
         <div className="container mx-auto px-6 relative z-10">
           <div className="text-center max-w-4xl mx-auto mb-12">
