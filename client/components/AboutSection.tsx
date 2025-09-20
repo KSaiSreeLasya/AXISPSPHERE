@@ -114,6 +114,9 @@ export default function AboutSection() {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
+              <div className="inline-flex items-center gap-2 px-3 py-1 mb-4 rounded-full border border-gold-500/30 bg-gold-500/10 text-gold-600 text-xs font-semibold uppercase tracking-wider">
+                About Us
+              </div>
               <h2 className="text-5xl md:text-6xl font-bold text-foreground mb-6">
                 Crafting{" "}
                 <span className="bg-gradient-to-r from-gold-400 to-gold-600 bg-clip-text text-transparent">
