@@ -6,7 +6,9 @@ export default function Terms() {
       <header className="border-b border-border/50 bg-background/70 backdrop-blur-xs sticky top-0 z-10">
         <div className="container mx-auto px-6 py-6 flex items-center justify-between">
           <h1 className="text-3xl md:text-4xl font-bold">Terms of Service</h1>
-          <Link to="/" className="text-gold-600 hover:text-gold-500">Home</Link>
+          <Link to="/" className="text-gold-600 hover:text-gold-500">
+            Home
+          </Link>
         </div>
       </header>
 
@@ -43,8 +45,14 @@ export default function Terms() {
         <h2 className="text-2xl font-semibold">4. Prohibited Conduct</h2>
         <ul className="list-disc pl-6 space-y-2">
           <li>Attempting to access non-public areas of the Services.</li>
-          <li>Interfering with or disrupting the integrity or performance of the Services.</li>
-          <li>Uploading malicious code or violating applicable laws or regulations.</li>
+          <li>
+            Interfering with or disrupting the integrity or performance of the
+            Services.
+          </li>
+          <li>
+            Uploading malicious code or violating applicable laws or
+            regulations.
+          </li>
         </ul>
 
         <h2 className="text-2xl font-semibold">5. Third‑Party Services</h2>
@@ -102,11 +110,11 @@ export default function Terms() {
         </p>
 
         <h2 className="text-2xl font-semibold">12. Contact</h2>
-        <p>
-          Questions about these Terms? Contact hello@ai-marketing.studio.
-        </p>
+        <p>Questions about these Terms? Contact hello@ai-marketing.studio.</p>
 
-        <p className="text-sm text-muted-foreground">Last updated: {new Date().toLocaleDateString()}</p>
+        <p className="text-sm text-muted-foreground">
+          Last updated: {new Date().toLocaleDateString()}
+        </p>
       </section>
     </main>
   );
