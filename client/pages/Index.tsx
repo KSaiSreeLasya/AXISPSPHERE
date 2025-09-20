@@ -52,7 +52,7 @@ export default function Index() {
     }
 
     try {
-      // send to local server endpoint which holds the service role key
+      // 1) Try server endpoint first (uses service role if configured)
       const res = await fetch(`/api/contact`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -60,13 +60,21 @@ export default function Index() {
       });
 
       if (!res.ok) {
-        const maskedKey = SUPA_KEY ? `${SUPA_KEY.slice(0, 6)}...${SUPA_KEY.slice(-6)}` : null;
-        console.error("Supabase REST error", {
-          endpoint: "/api/contact",
-          status: res.status,
-          supabase_key_preview: maskedKey,
+        // 2) Fallback: direct Supabase REST using anon key (requires RLS policy)
+        const direct = await fetch(`${SUPA_URL.replace(/\/$/, "")}/rest/v1/contact_messages`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            apikey: SUPA_KEY,
+            Authorization: `Bearer ${SUPA_KEY}`,
+            Prefer: "return=minimal",
+          },
+          body: JSON.stringify(payload),
         });
-        throw new Error(`HTTP ${res.status} ${res.statusText}`);
+
+        if (!direct.ok) {
+          throw new Error(`HTTP ${direct.status} ${direct.statusText}`);
+        }
       }
 
       ((window as any).Swal || (window as any).swal)?.fire({
