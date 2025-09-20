@@ -108,12 +108,24 @@ export default function HeroSection() {
         >
           {/* Headline - static and permanent */}
           <div className="mb-8">
-            <h1 className="text-6xl md:text-8xl font-bold bg-gradient-to-r from-luxury-700 to-gold-600 bg-clip-text text-transparent mb-4 leading-tight bg-[length:200%_200%] animate-gradient drop-shadow">
+            <motion.h1
+              initial={{ opacity: 0, y: -20, scale: 0.98 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+              whileHover={{ scale: 1.02 }}
+              className="text-6xl md:text-8xl font-bold bg-gradient-to-r from-luxury-700 to-gold-600 bg-clip-text text-transparent mb-4 leading-tight bg-[length:200%_200%] animate-gradient drop-shadow"
+            >
               Luxury
-            </h1>
-            <h2 className="text-6xl md:text-8xl font-bold bg-gradient-to-r from-gold-400 via-gold-500 to-gold-600 bg-clip-text text-transparent mb-4 leading-tight bg-[length:200%_200%] animate-gradient drop-shadow">
+            </motion.h1>
+            <motion.h2
+              initial={{ opacity: 0, y: 20, scale: 0.98 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ delay: 0.1, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+              whileHover={{ scale: 1.02 }}
+              className="text-6xl md:text-8xl font-bold bg-gradient-to-r from-gold-400 via-gold-500 to-gold-600 bg-clip-text text-transparent mb-4 leading-tight bg-[length:200%_200%] animate-gradient drop-shadow"
+            >
               Redefined
-            </h2>
+            </motion.h2>
           </div>
 
           {/* Subtitle */}
