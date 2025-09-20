@@ -108,10 +108,10 @@ export default function HeroSection() {
         >
           {/* Headline - static and permanent */}
           <div className="mb-8">
-            <h1 className="text-6xl md:text-8xl font-bold text-foreground mb-4 leading-tight">
+            <h1 className="text-6xl md:text-8xl font-bold bg-gradient-to-r from-luxury-700 to-gold-600 bg-clip-text text-transparent mb-4 leading-tight bg-[length:200%_200%] animate-gradient drop-shadow">
               Luxury
             </h1>
-            <h2 className="text-6xl md:text-8xl font-bold bg-gradient-to-r from-gold-400 to-gold-600 bg-clip-text text-transparent mb-4 leading-tight">
+            <h2 className="text-6xl md:text-8xl font-bold bg-gradient-to-r from-gold-400 via-gold-500 to-gold-600 bg-clip-text text-transparent mb-4 leading-tight bg-[length:200%_200%] animate-gradient drop-shadow">
               Redefined
             </h2>
           </div>
