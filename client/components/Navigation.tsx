@@ -67,7 +67,9 @@ export default function Navigation({ className = "" }: NavigationProps) {
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
             >
               <BrandLogo className="h-14 w-auto" />
-              <span className="hidden sm:inline-block text-2xl md:text-3xl font-bold tracking-wide text-foreground">Axisphere</span>
+              <span className="hidden sm:inline-block text-2xl md:text-3xl font-bold tracking-wide text-foreground">
+                Axisphere
+              </span>
             </motion.a>
 
             {/* Desktop Navigation */}
