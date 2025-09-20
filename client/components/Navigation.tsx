@@ -59,14 +59,15 @@ export default function Navigation({ className = "" }: NavigationProps) {
       >
         <nav className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
-            {/* Logo */}
+            {/* Logo + Brand */}
             <motion.a
               href="#"
-              className="flex items-center"
+              className="flex items-center gap-3"
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
             >
-              <BrandLogo className="h-[100px] w-auto" />
+              <BrandLogo className="h-14 w-auto" />
+              <span className="hidden sm:inline-block text-2xl md:text-3xl font-bold tracking-wide text-foreground">Axisphere</span>
             </motion.a>
 
             {/* Desktop Navigation */}
