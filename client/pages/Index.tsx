@@ -245,7 +245,7 @@ export default function Index() {
               <div className="mb-4">
                 <BrandLogo className="h-12 w-auto" />
                 <div className="text-sm font-semibold text-gold-600 mt-2">
-                  Axisphere Media Work
+                  Axisphere Media Work LLP
                 </div>
               </div>
               <p className="text-foreground/70 dark:text-white/70 leading-relaxed">
@@ -365,7 +365,7 @@ export default function Index() {
 
           <div className="border-t border-border pt-8 flex flex-col md:flex-row justify-between items-center">
             <div className="text-foreground/60 dark:text-white/60 text-sm">
-              © 2024 Axisphere Media Work. All rights reserved.
+              © 2024 Axisphere Media Work LLP. All rights reserved.
             </div>
             <div className="flex gap-6 text-foreground/60 dark:text-white/60 text-sm">
               <Link
