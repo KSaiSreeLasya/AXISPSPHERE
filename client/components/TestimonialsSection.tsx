@@ -24,7 +24,7 @@ const testimonials: Testimonial[] = [
     title: "CEO",
     company: "Azure Resorts",
     quote:
-      "LuxuryStudio transformed our entire brand identity. The attention to detail and creative vision exceeded every expectation. Our bookings increased by 340% within the first quarter.",
+      "Axisphere Work Media LLP transformed our entire brand identity. The attention to detail and creative vision exceeded every expectation. Our bookings increased by 340% within the first quarter.",
     avatar: "/placeholder.svg",
     logo: "/placeholder.svg",
     rating: 5,
@@ -49,7 +49,7 @@ const testimonials: Testimonial[] = [
     title: "Creative Director",
     company: "Meridian Fashion",
     quote:
-      "Working with LuxuryStudio was like having a creative partner who understood our vision before we did. The global campaign they created elevated our brand to new heights.",
+      "Working with Axisphere Work Media LLP was like having a creative partner who understood our vision before we did. The global campaign they created elevated our brand to new heights.",
     avatar: "/placeholder.svg",
     logo: "/placeholder.svg",
     rating: 5,
