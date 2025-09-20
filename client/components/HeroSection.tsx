@@ -189,7 +189,7 @@ export default function HeroSection() {
                 </div>
                 <div className="text-sm text-foreground/80">Increase in Conversions</div>
               </div>
-              <div className="text-right font-bold text-foreground">25–40%</div>
+              <div className="text-right font-bold text-foreground whitespace-nowrap">25–40%</div>
             </motion.div>
 
             <motion.div whileHover={{ scale: 1.02 }} className="flex items-center justify-between rounded-2xl px-5 py-4 bg-white/60 dark:bg-white/5 border border-gold-500/20 shadow-sm backdrop-blur-sm">
@@ -199,7 +199,7 @@ export default function HeroSection() {
                 </div>
                 <div className="text-sm text-foreground/80">More Qualified Leads</div>
               </div>
-              <div className="text-right font-bold text-foreground">3–5×</div>
+              <div className="text-right font-bold text-foreground whitespace-nowrap">3–5×</div>
             </motion.div>
 
             <motion.div whileHover={{ scale: 1.02 }} className="flex items-center justify-between rounded-2xl px-5 py-4 bg-white/60 dark:bg-white/5 border border-gold-500/20 shadow-sm backdrop-blur-sm">
@@ -209,7 +209,7 @@ export default function HeroSection() {
                 </div>
                 <div className="text-sm text-foreground/80">Expert Support</div>
               </div>
-              <div className="text-right font-bold text-foreground">24/7</div>
+              <div className="text-right font-bold text-foreground whitespace-nowrap">24/7</div>
             </motion.div>
           </motion.div>
         </motion.div>
