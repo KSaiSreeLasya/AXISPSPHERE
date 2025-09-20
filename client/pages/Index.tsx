@@ -8,8 +8,72 @@ import BlogSection from "@/components/BlogSection";
 import PackagesSection from "@/components/PackagesSection";
 import FloatingCTA from "@/components/FloatingCTA";
 import BrandLogo from "@/components/BrandLogo";
+import { useEffect, useState } from "react";
 
 export default function Index() {
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    // preload SweetAlert2 script
+    if (typeof window !== "undefined") {
+      if ((window as any).Swal) return;
+      const s = document.createElement("script");
+      s.src = "https://cdn.jsdelivr.net/npm/sweetalert2@11";
+      s.async = true;
+      document.head.appendChild(s);
+    }
+  }, []);
+
+  async function handleSubmit(e: any) {
+    e.preventDefault();
+    setLoading(true);
+    const form = e.currentTarget as HTMLFormElement;
+    const fd = new FormData(form);
+    const payload = {
+      name: fd.get("name")?.toString() || "",
+      email: fd.get("email")?.toString() || "",
+      phone: fd.get("phone")?.toString() || "",
+      subject: fd.get("company")?.toString() || "",
+      message: fd.get("goals")?.toString() || "",
+      consent: false,
+      metadata: {}
+    };
+
+    try {
+      const res = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/rest/v1/contact_messages`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          apikey: import.meta.env.VITE_SUPABASE_ANON_KEY,
+          Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
+          Prefer: "return=representation"
+        },
+        body: JSON.stringify(payload)
+      });
+
+      if (!res.ok) {
+        const txt = await res.text();
+        throw new Error(txt || res.statusText);
+      }
+
+      ((window as any).Swal || (window as any).swal)?.fire({
+        icon: "success",
+        title: "Thanks!",
+        text: "Your message was submitted. We'll get back to you soon.",
+        timer: 3500
+      });
+
+      form.reset();
+    } catch (err: any) {
+      ((window as any).Swal || (window as any).swal)?.fire({
+        icon: "error",
+        title: "Submission failed",
+        text: err?.message || "An error occurred"
+      });
+    } finally {
+      setLoading(false);
+    }
+  }
   return (
     <div className="min-h-screen bg-background">
       {/* Navigation */}
@@ -55,10 +119,7 @@ export default function Index() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {/* Form */}
             <div className="lg:col-span-2 bg-card p-8 rounded-2xl border border-border">
-              <form
-                id="contact-form"
-                className="grid grid-cols-1 md:grid-cols-2 gap-4"
-              >
+              <form id="contact-form" className="grid grid-cols-1 md:grid-cols-2 gap-4" onSubmit={handleSubmit}>
                 <input
                   name="name"
                   placeholder="Full Name"
@@ -85,20 +146,13 @@ export default function Index() {
                   className="md:col-span-2 p-3 rounded-md border border-input bg-background h-32"
                 />
 
-                <div className="md:col-span-2 flex justify-start mt-2">
-                  <button
-                    type="button"
-                    onClick={() => {
-                      const el = document.querySelector(
-                        "#contact-form",
-                      ) as HTMLFormElement | null;
-                      if (el) el.reset();
-                      // Optionally open mail client
-                    }}
-                    className="bg-gold-500 text-white px-8 py-3 rounded-full font-semibold"
-                  >
-                    Schedule My Consultation
-                  </button>
+                <div className="md:col-span-2 flex justify-between mt-2 items-center">
+                  <div>
+                    <button type="submit" className="bg-gold-500 text-white px-8 py-3 rounded-full font-semibold">Schedule My Consultation</button>
+                  </div>
+                  <div>
+                    <button type="button" onClick={() => { const el = document.querySelector("#contact-form") as HTMLFormElement | null; if (el) el.reset(); }} className="ml-4 bg-transparent border border-input px-4 py-2 rounded-full">Reset</button>
+                  </div>
                 </div>
               </form>
             </div>
