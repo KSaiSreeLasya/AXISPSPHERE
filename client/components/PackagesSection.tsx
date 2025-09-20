@@ -32,6 +32,7 @@ export default function PackagesSection() {
     {
       title: "AI Growth Package",
       price: "₹75,000",
+      icon: <Rocket size={20} className="text-white" />,
       bullets: [
         "50 AI-generated social media posts per month",
         "8 AI-optimized blog articles with SEO analysis",
