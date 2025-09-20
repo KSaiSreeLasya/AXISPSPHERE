@@ -125,7 +125,7 @@ export default function CaseStudiesSection() {
       : caseStudies.filter((study) => study.category === activeCategory);
 
   return (
-    <section id="work" ref={ref} className="py-24 bg-luxury-50/30">
+    <section id="work" ref={ref} className="pt-20 pb-24 bg-luxury-50/30">
       <div className="container mx-auto px-6">
         {/* Section Header */}
         <motion.div

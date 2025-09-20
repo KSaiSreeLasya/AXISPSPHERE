@@ -67,7 +67,7 @@ export default function ServicesSection() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="services" ref={ref} className="py-24 bg-background">
+    <section id="services" ref={ref} className="pt-20 pb-24 bg-background">
       <div className="container mx-auto px-6">
         {/* Section Header */}
         <motion.div

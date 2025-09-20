@@ -36,7 +36,7 @@ export default function Index() {
       subject: fd.get("company")?.toString() || "",
       message: fd.get("goals")?.toString() || "",
       consent: false,
-      metadata: {}
+      metadata: {},
     };
 
     const SUPA_URL = import.meta.env.VITE_SUPABASE_URL;
@@ -46,7 +46,7 @@ export default function Index() {
       ((window as any).Swal || (window as any).swal)?.fire({
         icon: "error",
         title: "Configuration missing",
-        text: "Supabase URL or anon key is not configured. Ask the admin to set VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY."
+        text: "Supabase URL or anon key is not configured. Ask the admin to set VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY.",
       });
       return;
     }
@@ -56,30 +56,34 @@ export default function Index() {
       const res = await fetch(`/api/contact`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
+        body: JSON.stringify(payload),
       });
 
       if (!res.ok) {
-        let bodyText = '';
+        let bodyText = "";
         try {
           const clone = res.clone();
-          const ct = clone.headers.get('content-type') || '';
+          const ct = clone.headers.get("content-type") || "";
           bodyText = await clone.text();
-          // if it's JSON, pretty-print
-          if (ct.includes('application/json')) {
+          if (ct.includes("application/json")) {
             try {
               const parsed = JSON.parse(bodyText);
               bodyText = JSON.stringify(parsed);
-            } catch (_) {
-              // leave as-is
-            }
+            } catch (_) {}
           }
         } catch (readErr) {
           bodyText = `(failed to read response body: ${String(readErr)})`;
         }
-        const maskedKey = SUPA_KEY ? `${SUPA_KEY.slice(0,6)}...${SUPA_KEY.slice(-6)}` : null;
+        const maskedKey = SUPA_KEY
+          ? `${SUPA_KEY.slice(0, 6)}...${SUPA_KEY.slice(-6)}`
+          : null;
         const errMsg = `HTTP ${res.status} ${res.statusText} - ${bodyText}`;
-        console.error('Supabase REST error', { url, status: res.status, body: bodyText, supabase_key_preview: maskedKey });
+        console.error("Supabase REST error", {
+          endpoint: "/api/contact",
+          status: res.status,
+          body: bodyText,
+          supabase_key_preview: maskedKey,
+        });
         throw new Error(errMsg);
       }
 
@@ -87,7 +91,7 @@ export default function Index() {
         icon: "success",
         title: "Thanks!",
         text: "Your message was submitted. We'll get back to you soon.",
-        timer: 3500
+        timer: 3500,
       });
 
       form.reset();
@@ -95,7 +99,7 @@ export default function Index() {
       ((window as any).Swal || (window as any).swal)?.fire({
         icon: "error",
         title: "Submission failed",
-        text: err?.message || "An unexpected error occurred"
+        text: err?.message || "An unexpected error occurred",
       });
       console.error("Contact submit error:", err);
     } finally {
@@ -131,7 +135,7 @@ export default function Index() {
       {/* Contact Section */}
       <section
         id="contact"
-        className="py-24 bg-background relative overflow-hidden"
+        className="pt-20 pb-24 bg-background relative overflow-hidden"
       >
         <div className="container mx-auto px-6 relative z-10">
           <div className="text-center max-w-4xl mx-auto mb-12">
@@ -147,7 +151,11 @@ export default function Index() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {/* Form */}
             <div className="lg:col-span-2 bg-card p-8 rounded-2xl border border-border">
-              <form id="contact-form" className="grid grid-cols-1 md:grid-cols-2 gap-4" onSubmit={handleSubmit}>
+              <form
+                id="contact-form"
+                className="grid grid-cols-1 md:grid-cols-2 gap-4"
+                onSubmit={handleSubmit}
+              >
                 <input
                   name="name"
                   placeholder="Full Name"
@@ -176,10 +184,26 @@ export default function Index() {
 
                 <div className="md:col-span-2 flex justify-between mt-2 items-center">
                   <div>
-                    <button type="submit" className="bg-gold-500 text-white px-8 py-3 rounded-full font-semibold">Schedule My Consultation</button>
+                    <button
+                      type="submit"
+                      className="bg-gold-500 text-white px-8 py-3 rounded-full font-semibold"
+                    >
+                      Schedule My Consultation
+                    </button>
                   </div>
                   <div>
-                    <button type="button" onClick={() => { const el = document.querySelector("#contact-form") as HTMLFormElement | null; if (el) el.reset(); }} className="ml-4 bg-transparent border border-input px-4 py-2 rounded-full">Reset</button>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        const el = document.querySelector(
+                          "#contact-form",
+                        ) as HTMLFormElement | null;
+                        if (el) el.reset();
+                      }}
+                      className="ml-4 bg-transparent border border-input px-4 py-2 rounded-full"
+                    >
+                      Reset
+                    </button>
                   </div>
                 </div>
               </form>
