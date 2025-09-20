@@ -67,18 +67,24 @@ export default function Index() {
       if (!res.ok) {
         let bodyText = '';
         try {
-          const ct = res.headers.get('content-type') || '';
+          const clone = res.clone();
+          const ct = clone.headers.get('content-type') || '';
+          bodyText = await clone.text();
+          // if it's JSON, pretty-print
           if (ct.includes('application/json')) {
-            const j = await res.json();
-            bodyText = JSON.stringify(j);
-          } else {
-            bodyText = await res.text();
+            try {
+              const parsed = JSON.parse(bodyText);
+              bodyText = JSON.stringify(parsed);
+            } catch (_) {
+              // leave as-is
+            }
           }
         } catch (readErr) {
           bodyText = `(failed to read response body: ${String(readErr)})`;
         }
+        const maskedKey = SUPA_KEY ? `${SUPA_KEY.slice(0,6)}...${SUPA_KEY.slice(-6)}` : null;
         const errMsg = `HTTP ${res.status} ${res.statusText} - ${bodyText}`;
-        console.error('Supabase REST error', { url: url, status: res.status, body: bodyText });
+        console.error('Supabase REST error', { url, status: res.status, body: bodyText, supabase_key_preview: maskedKey });
         throw new Error(errMsg);
       }
 
