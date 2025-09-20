@@ -39,21 +39,39 @@ export default function Index() {
       metadata: {}
     };
 
+    const SUPA_URL = import.meta.env.VITE_SUPABASE_URL;
+    const SUPA_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY;
+    if (!SUPA_URL || !SUPA_KEY) {
+      setLoading(false);
+      ((window as any).Swal || (window as any).swal)?.fire({
+        icon: "error",
+        title: "Configuration missing",
+        text: "Supabase URL or anon key is not configured. Ask the admin to set VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY."
+      });
+      return;
+    }
+
     try {
-      const res = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/rest/v1/contact_messages`, {
+      const url = `${SUPA_URL.replace(/\/$/, "")}/rest/v1/contact_messages`;
+      const res = await fetch(url, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          apikey: import.meta.env.VITE_SUPABASE_ANON_KEY,
-          Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
+          apikey: SUPA_KEY,
+          Authorization: `Bearer ${SUPA_KEY}`,
           Prefer: "return=representation"
         },
         body: JSON.stringify(payload)
       });
 
       if (!res.ok) {
-        const txt = await res.text();
-        throw new Error(txt || res.statusText);
+        let txt = res.statusText || `HTTP ${res.status}`;
+        try {
+          txt = await res.clone().text();
+        } catch (e) {
+          // ignore clone/read errors
+        }
+        throw new Error(txt || `HTTP ${res.status}`);
       }
 
       ((window as any).Swal || (window as any).swal)?.fire({
@@ -68,8 +86,9 @@ export default function Index() {
       ((window as any).Swal || (window as any).swal)?.fire({
         icon: "error",
         title: "Submission failed",
-        text: err?.message || "An error occurred"
+        text: err?.message || "An unexpected error occurred"
       });
+      console.error("Contact submit error:", err);
     } finally {
       setLoading(false);
     }
