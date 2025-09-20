@@ -119,7 +119,10 @@ export default function TestimonialsSection() {
   };
 
   return (
-    <section ref={ref} className="pt-20 pb-24 bg-luxury-900 relative overflow-hidden">
+    <section
+      ref={ref}
+      className="pt-20 pb-24 bg-luxury-900 relative overflow-hidden"
+    >
       {/* Background Elements */}
       <div className="absolute inset-0">
         <motion.div
