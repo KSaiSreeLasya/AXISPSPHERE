@@ -9,6 +9,7 @@ import PackagesSection from "@/components/PackagesSection";
 import FloatingCTA from "@/components/FloatingCTA";
 import BrandLogo from "@/components/BrandLogo";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Index() {
   const [loading, setLoading] = useState(false);
@@ -365,12 +366,12 @@ export default function Index() {
               © 2024 Axisphere Media Work. All rights reserved.
             </div>
             <div className="flex gap-6 text-foreground/60 dark:text-white/60 text-sm">
-              <a href="/privacy" className="hover:text-gold-400 transition-colors">
+              <Link to="/privacy" className="hover:text-gold-400 transition-colors">
                 Privacy Policy
-              </a>
-              <a href="/terms" className="hover:text-gold-400 transition-colors">
+              </Link>
+              <Link to="/terms" className="hover:text-gold-400 transition-colors">
                 Terms of Service
-              </a>
+              </Link>
             </div>
           </div>
         </div>
