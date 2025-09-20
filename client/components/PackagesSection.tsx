@@ -2,12 +2,14 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { Check, Wand2, Rocket, Gem } from "lucide-react";
 
 export default function PackagesSection() {
   const packages = [
     {
       title: "AI Starter Package",
       price: "₹30,000",
+      icon: <Wand2 size={20} className="text-white" />,
       bullets: [
         "20 AI-generated social media posts per month",
         "4 AI-optimized blog articles (800-1200 words each)",
@@ -30,6 +32,7 @@ export default function PackagesSection() {
     {
       title: "AI Growth Package",
       price: "₹75,000",
+      icon: <Rocket size={20} className="text-white" />,
       bullets: [
         "50 AI-generated social media posts per month",
         "8 AI-optimized blog articles with SEO analysis",
@@ -56,6 +59,7 @@ export default function PackagesSection() {
     {
       title: "AI Enterprise Package",
       price: "₹1,50,000",
+      icon: <Gem size={20} className="text-white" />,
       bullets: [
         "100+ AI-generated social media posts per month",
         "15 AI-optimized long-form content pieces with advanced SEO",
@@ -95,9 +99,7 @@ export default function PackagesSection() {
   return (
     <section id="packages" className="pt-20 pb-24 bg-background">
       <div className="container mx-auto px-6 text-center">
-        <h2 className="text-4xl md:text-5xl font-bold mb-4">
-          Choose Your AI Marketing Package
-        </h2>
+        <h2 className="text-4xl md:text-5xl font-bold mb-4">Pricing</h2>
         <p className="text-muted-foreground mb-12">
           Scalable AI-powered solutions designed to grow with your business
           needs
@@ -105,49 +107,69 @@ export default function PackagesSection() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto items-stretch">
           {packages.map((pkg, idx) => (
-            <div
-              key={pkg.title}
-              className={`rounded-2xl border border-border p-8 bg-card shadow ${pkg.featured ? "border-gold-500" : ""} flex flex-col h-full min-h-[420px]`}
-            >
-              <div className="mb-4">
-                <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-br from-gold-400 to-gold-600 text-white mb-4">
-                  ★
-                </div>
-                <h3 className="text-2xl font-bold mb-2">{pkg.title}</h3>
-                <div className="text-3xl font-extrabold text-foreground mb-4">
-                  {pkg.price}{" "}
-                  <span className="text-sm font-medium text-muted-foreground">
-                    /per month
-                  </span>
-                </div>
-              </div>
-
-              <ul className="text-sm text-muted-foreground space-y-2 mb-6 text-left flex-grow">
-                {pkg.bullets.map((b) => (
-                  <li key={b}>• {b}</li>
-                ))}
-              </ul>
-
-              {pkg.successMetrics && (
-                <div className="bg-background/50 p-4 rounded-lg border border-border mb-6">
-                  <div className="font-semibold mb-2">
-                    Success Metrics Target:
+            <div key={pkg.title} className="relative">
+              {pkg.featured && (
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
+                  <div className="px-3 py-1 rounded-full text-xs font-semibold bg-gold-500 text-white shadow">
+                    Most Popular
                   </div>
-                  <ul className="text-sm text-muted-foreground space-y-1 text-left">
-                    {pkg.successMetrics.map((m) => (
-                      <li key={m}>• {m}</li>
-                    ))}
-                  </ul>
                 </div>
               )}
 
-              <div className="text-center mt-auto">
-                <Button
-                  onClick={scrollToContact}
-                  className={`${pkg.featured ? "bg-gold-500 text-white" : "bg-transparent border"} px-6 py-3 rounded-full`}
-                >
-                  Get Started
-                </Button>
+              <div
+                className={`rounded-2xl border p-8 bg-card shadow transition-all duration-300 hover:shadow-luxury flex flex-col h-full min-h-[460px] ${
+                  pkg.featured
+                    ? "border-gold-500/60 ring-2 ring-gold-500/40"
+                    : "border-border/60"
+                }`}
+              >
+                <div className="mb-6">
+                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-br from-gold-400 to-gold-600 text-white mb-4">
+                    {pkg.icon}
+                  </div>
+                  <h3 className="text-2xl font-bold mb-2">{pkg.title}</h3>
+                  <div className="text-4xl font-extrabold text-foreground mb-2">
+                    {pkg.price}
+                    <span className="text-sm font-medium text-muted-foreground">
+                      {" "}
+                      / month
+                    </span>
+                  </div>
+                </div>
+
+                <ul className="text-sm text-foreground/80 space-y-2 mb-6 text-left flex-grow">
+                  {pkg.bullets.map((b) => (
+                    <li key={b} className="flex items-start gap-2">
+                      <Check size={16} className="mt-1 text-gold-600" />
+                      <span>{b}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                {pkg.successMetrics && (
+                  <div className="p-4 rounded-xl border mb-6 bg-gold-500/10 border-gold-500/20 text-left">
+                    <div className="font-semibold mb-2">
+                      Success Metrics Target
+                    </div>
+                    <ul className="text-sm text-foreground/80 space-y-1">
+                      {pkg.successMetrics.map((m) => (
+                        <li key={m} className="flex items-start gap-2">
+                          <Check size={16} className="mt-1 text-gold-600" />
+                          <span>{m}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                <div className="text-center mt-auto">
+                  <Button
+                    onClick={scrollToContact}
+                    className="px-6 py-3 rounded-full bg-gold-500 text-white hover:bg-gold-600 shadow-glow-gold"
+                  >
+                    Get Started
+                  </Button>
+                </div>
               </div>
             </div>
           ))}

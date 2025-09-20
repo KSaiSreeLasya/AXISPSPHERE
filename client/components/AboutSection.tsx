@@ -101,19 +101,22 @@ export default function AboutSection() {
       </motion.div>
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-16 items-stretch">
           {/* Story Content */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8 }}
-            className="space-y-8"
+            className="space-y-8 bg-card/60 border border-border/50 rounded-3xl p-8 backdrop-blur-sm shadow-glow h-full"
           >
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
+              <div className="inline-flex items-center gap-2 px-3 py-1 mb-4 rounded-full border border-gold-500/30 bg-gold-500/10 text-gold-600 text-xs font-semibold uppercase tracking-wider">
+                About Us
+              </div>
               <h2 className="text-5xl md:text-6xl font-bold text-foreground mb-6">
                 Crafting{" "}
                 <span className="bg-gradient-to-r from-gold-400 to-gold-600 bg-clip-text text-transparent">
@@ -190,7 +193,7 @@ export default function AboutSection() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
-                    className="group"
+                    className="group rounded-xl border border-border/50 bg-background/60 p-4 hover:border-gold-500/40 transition-colors duration-300"
                   >
                     <div className="flex items-start space-x-3">
                       <div className="text-gold-500 group-hover:text-gold-600 transition-colors duration-300">
@@ -216,9 +219,9 @@ export default function AboutSection() {
             initial={{ opacity: 0, x: 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="relative"
+            className="relative h-full"
           >
-            <div className="grid grid-cols-2 gap-6">
+            <div className="grid grid-cols-2 gap-6 auto-rows-fr">
               {teamMembers.map((member, index) => (
                 <TeamMemberCard
                   key={member.id}
@@ -253,11 +256,11 @@ function TeamMemberCard({ member, index, isInView }: TeamMemberCardProps) {
       initial={{ opacity: 0, y: 50 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.8, delay: 0.6 + index * 0.2 }}
-      className="group relative"
+      className="group relative h-full"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="relative overflow-hidden rounded-2xl bg-card border border-border/50 transition-all duration-500 hover:border-gold-500/30 hover:shadow-luxury">
+      <div className="relative overflow-hidden rounded-2xl bg-card border border-border/50 transition-all duration-500 hover:border-gold-500/30 hover:shadow-luxury h-full flex flex-col">
         {/* Image */}
         <div className="relative aspect-square overflow-hidden">
           <motion.img

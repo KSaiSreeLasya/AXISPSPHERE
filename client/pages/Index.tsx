@@ -52,7 +52,7 @@ export default function Index() {
     }
 
     try {
-      // send to local server endpoint which holds the service role key
+      // 1) Try server endpoint first (uses service role if configured)
       const res = await fetch(`/api/contact`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -60,31 +60,24 @@ export default function Index() {
       });
 
       if (!res.ok) {
-        let bodyText = "";
-        try {
-          const clone = res.clone();
-          const ct = clone.headers.get("content-type") || "";
-          bodyText = await clone.text();
-          if (ct.includes("application/json")) {
-            try {
-              const parsed = JSON.parse(bodyText);
-              bodyText = JSON.stringify(parsed);
-            } catch (_) {}
-          }
-        } catch (readErr) {
-          bodyText = `(failed to read response body: ${String(readErr)})`;
+        // 2) Fallback: direct Supabase REST using anon key (requires RLS policy)
+        const direct = await fetch(
+          `${SUPA_URL.replace(/\/$/, "")}/rest/v1/contact_messages`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              apikey: SUPA_KEY,
+              Authorization: `Bearer ${SUPA_KEY}`,
+              Prefer: "return=minimal",
+            },
+            body: JSON.stringify(payload),
+          },
+        );
+
+        if (!direct.ok) {
+          throw new Error(`HTTP ${direct.status} ${direct.statusText}`);
         }
-        const maskedKey = SUPA_KEY
-          ? `${SUPA_KEY.slice(0, 6)}...${SUPA_KEY.slice(-6)}`
-          : null;
-        const errMsg = `HTTP ${res.status} ${res.statusText} - ${bodyText}`;
-        console.error("Supabase REST error", {
-          endpoint: "/api/contact",
-          status: res.status,
-          body: bodyText,
-          supabase_key_preview: maskedKey,
-        });
-        throw new Error(errMsg);
       }
 
       ((window as any).Swal || (window as any).swal)?.fire({
@@ -248,6 +241,9 @@ export default function Index() {
             <div>
               <div className="mb-4">
                 <BrandLogo className="h-12 w-auto" />
+                <div className="text-sm font-semibold text-gold-600 mt-2">
+                  axisphere media work
+                </div>
               </div>
               <p className="text-foreground/70 dark:text-white/70 leading-relaxed">
                 Transforming ambitious brands into luxury market leaders through
@@ -366,7 +362,7 @@ export default function Index() {
 
           <div className="border-t border-border pt-8 flex flex-col md:flex-row justify-between items-center">
             <div className="text-foreground/60 dark:text-white/60 text-sm">
-              © 2024 LuxuryStudio. All rights reserved.
+              © 2024 Axisphere Media Work. All rights reserved.
             </div>
             <div className="flex gap-6 text-foreground/60 dark:text-white/60 text-sm">
               <a href="#" className="hover:text-gold-400 transition-colors">
