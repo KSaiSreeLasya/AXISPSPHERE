@@ -62,21 +62,18 @@ export default function Index() {
       if (!res.ok) {
         let bodyText = "";
         try {
-          const clone = res.clone();
-          const ct = clone.headers.get("content-type") || "";
-          bodyText = await clone.text();
+          const ct = res.headers.get("content-type") || "";
+          bodyText = await res.text();
           if (ct.includes("application/json")) {
             try {
               const parsed = JSON.parse(bodyText);
               bodyText = JSON.stringify(parsed);
-            } catch (_) {}
+            } catch {}
           }
         } catch (readErr) {
           bodyText = `(failed to read response body: ${String(readErr)})`;
         }
-        const maskedKey = SUPA_KEY
-          ? `${SUPA_KEY.slice(0, 6)}...${SUPA_KEY.slice(-6)}`
-          : null;
+        const maskedKey = SUPA_KEY ? `${SUPA_KEY.slice(0, 6)}...${SUPA_KEY.slice(-6)}` : null;
         const errMsg = `HTTP ${res.status} ${res.statusText} - ${bodyText}`;
         console.error("Supabase REST error", {
           endpoint: "/api/contact",
