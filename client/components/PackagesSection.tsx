@@ -125,7 +125,7 @@ export default function PackagesSection() {
               >
                 <div className="mb-6">
                   <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-br from-gold-400 to-gold-600 text-white mb-4">
-                    <Star size={20} className="fill-current" />
+                    {pkg.icon}
                   </div>
                   <h3 className="text-2xl font-bold mb-2">{pkg.title}</h3>
                   <div className="text-4xl font-extrabold text-foreground mb-2">
