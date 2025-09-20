@@ -245,6 +245,7 @@ export default function Index() {
             <div>
               <div className="mb-4">
                 <BrandLogo className="h-12 w-auto" />
+                <div className="text-sm font-semibold text-gold-600 mt-2">axisphere media work</div>
               </div>
               <p className="text-foreground/70 dark:text-white/70 leading-relaxed">
                 Transforming ambitious brands into luxury market leaders through
