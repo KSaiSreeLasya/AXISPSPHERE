@@ -61,16 +61,19 @@ export default function Index() {
 
       if (!res.ok) {
         // 2) Fallback: direct Supabase REST using anon key (requires RLS policy)
-        const direct = await fetch(`${SUPA_URL.replace(/\/$/, "")}/rest/v1/contact_messages`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            apikey: SUPA_KEY,
-            Authorization: `Bearer ${SUPA_KEY}`,
-            Prefer: "return=minimal",
+        const direct = await fetch(
+          `${SUPA_URL.replace(/\/$/, "")}/rest/v1/contact_messages`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              apikey: SUPA_KEY,
+              Authorization: `Bearer ${SUPA_KEY}`,
+              Prefer: "return=minimal",
+            },
+            body: JSON.stringify(payload),
           },
-          body: JSON.stringify(payload),
-        });
+        );
 
         if (!direct.ok) {
           throw new Error(`HTTP ${direct.status} ${direct.statusText}`);
@@ -238,7 +241,9 @@ export default function Index() {
             <div>
               <div className="mb-4">
                 <BrandLogo className="h-12 w-auto" />
-                <div className="text-sm font-semibold text-gold-600 mt-2">axisphere media work</div>
+                <div className="text-sm font-semibold text-gold-600 mt-2">
+                  axisphere media work
+                </div>
               </div>
               <p className="text-foreground/70 dark:text-white/70 leading-relaxed">
                 Transforming ambitious brands into luxury market leaders through

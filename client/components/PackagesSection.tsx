@@ -130,7 +130,10 @@ export default function PackagesSection() {
                   <h3 className="text-2xl font-bold mb-2">{pkg.title}</h3>
                   <div className="text-4xl font-extrabold text-foreground mb-2">
                     {pkg.price}
-                    <span className="text-sm font-medium text-muted-foreground"> / month</span>
+                    <span className="text-sm font-medium text-muted-foreground">
+                      {" "}
+                      / month
+                    </span>
                   </div>
                 </div>
 
@@ -145,7 +148,9 @@ export default function PackagesSection() {
 
                 {pkg.successMetrics && (
                   <div className="p-4 rounded-xl border mb-6 bg-gold-500/10 border-gold-500/20 text-left">
-                    <div className="font-semibold mb-2">Success Metrics Target</div>
+                    <div className="font-semibold mb-2">
+                      Success Metrics Target
+                    </div>
                     <ul className="text-sm text-foreground/80 space-y-1">
                       {pkg.successMetrics.map((m) => (
                         <li key={m} className="flex items-start gap-2">
