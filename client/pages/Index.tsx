@@ -234,6 +234,17 @@ export default function Index() {
               </div>
             </div>
           </div>
+          <div className="mt-10 max-w-6xl mx-auto rounded-2xl overflow-hidden border border-border">
+            <iframe
+              title="Axisphere Location Map"
+              src="https://www.google.com/maps?q=Plot%20no.102,%20103,%20Temple%20Lane,Mythri%20Nagar,%20Mathrusri%20Nagar,%20Madinaguda,%20Serilingampally,%20K.V.Rangareddy-%20500049,%20Telangana,%20India&output=embed"
+              width="100%"
+              height="450"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              className="w-full"
+            />
+          </div>
         </div>
       </section>
 
@@ -243,7 +254,7 @@ export default function Index() {
           <div className="grid md:grid-cols-4 gap-8 mb-12">
             <div>
               <div className="mb-4">
-                <BrandLogo className="h-12 w-auto" />
+                <BrandLogo className="h-16 w-auto" />
                 <div className="text-sm font-semibold text-gold-600 mt-2">
                   Axisphere Media Work LLP
                 </div>
