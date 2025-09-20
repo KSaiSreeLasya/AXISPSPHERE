@@ -221,7 +221,7 @@ export default function AboutSection() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="relative h-full"
           >
-            <div className="grid grid-cols-2 gap-6">
+            <div className="grid grid-cols-2 gap-6 auto-rows-fr">
               {teamMembers.map((member, index) => (
                 <TeamMemberCard
                   key={member.id}
@@ -256,11 +256,11 @@ function TeamMemberCard({ member, index, isInView }: TeamMemberCardProps) {
       initial={{ opacity: 0, y: 50 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.8, delay: 0.6 + index * 0.2 }}
-      className="group relative"
+      className="group relative h-full"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="relative overflow-hidden rounded-2xl bg-card border border-border/50 transition-all duration-500 hover:border-gold-500/30 hover:shadow-luxury">
+      <div className="relative overflow-hidden rounded-2xl bg-card border border-border/50 transition-all duration-500 hover:border-gold-500/30 hover:shadow-luxury h-full flex flex-col">
         {/* Image */}
         <div className="relative aspect-square overflow-hidden">
           <motion.img
