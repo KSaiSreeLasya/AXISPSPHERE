@@ -220,7 +220,9 @@ export default function Index() {
               <div className="bg-card p-6 rounded-2xl border border-border">
                 <h4 className="font-semibold mb-2">Visit us</h4>
                 <div className="text-muted-foreground">
-                  Bengaluru • Mumbai • Delhi
+                  Plot no.102, 103, Temple Lane,Mythri Nagar, Mathrusri Nagar,
+                  Madinaguda, Serilingampally, K.V.Rangareddy- 500049,
+                  Telangana, India
                 </div>
               </div>
 
