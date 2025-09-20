@@ -65,13 +65,21 @@ export default function Index() {
       });
 
       if (!res.ok) {
-        let txt = res.statusText || `HTTP ${res.status}`;
+        let bodyText = '';
         try {
-          txt = await res.clone().text();
-        } catch (e) {
-          // ignore clone/read errors
+          const ct = res.headers.get('content-type') || '';
+          if (ct.includes('application/json')) {
+            const j = await res.json();
+            bodyText = JSON.stringify(j);
+          } else {
+            bodyText = await res.text();
+          }
+        } catch (readErr) {
+          bodyText = `(failed to read response body: ${String(readErr)})`;
         }
-        throw new Error(txt || `HTTP ${res.status}`);
+        const errMsg = `HTTP ${res.status} ${res.statusText} - ${bodyText}`;
+        console.error('Supabase REST error', { url: url, status: res.status, body: bodyText });
+        throw new Error(errMsg);
       }
 
       ((window as any).Swal || (window as any).swal)?.fire({
