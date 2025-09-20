@@ -52,15 +52,10 @@ export default function Index() {
     }
 
     try {
-      const url = `${SUPA_URL.replace(/\/$/, "")}/rest/v1/contact_messages`;
-      const res = await fetch(url, {
+      // send to local server endpoint which holds the service role key
+      const res = await fetch(`/api/contact`, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          apikey: SUPA_KEY,
-          Authorization: `Bearer ${SUPA_KEY}`,
-          Prefer: "return=representation"
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload)
       });
 
