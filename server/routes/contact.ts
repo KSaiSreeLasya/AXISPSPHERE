@@ -1,5 +1,4 @@
 import type { RequestHandler } from "express";
-import fetch from "node-fetch";
 
 export const handleContact: RequestHandler = async (req, res) => {
   const SUPA_URL = process.env.SUPABASE_URL;
