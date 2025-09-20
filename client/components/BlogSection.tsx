@@ -137,7 +137,7 @@ export default function BlogSection() {
           </motion.p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12 max-w-7xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-12 max-w-7xl mx-auto items-stretch">
           {/* Featured Post */}
           {featuredPost && (
             <motion.div
@@ -200,7 +200,7 @@ function FeaturedPostCard({ post }: FeaturedPostCardProps) {
 
   return (
     <motion.article
-      className="group relative bg-card rounded-3xl overflow-hidden border border-border/50 hover:border-gold-500/30 transition-all duration-500 hover:shadow-luxury"
+      className="group relative bg-card rounded-3xl overflow-hidden border border-border/50 hover:border-gold-500/30 transition-all duration-500 hover:shadow-luxury h-full flex flex-col"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       whileHover={{ y: -8 }}

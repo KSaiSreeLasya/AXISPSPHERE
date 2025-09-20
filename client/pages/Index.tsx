@@ -60,28 +60,13 @@ export default function Index() {
       });
 
       if (!res.ok) {
-        let bodyText = "";
-        try {
-          const ct = res.headers.get("content-type") || "";
-          bodyText = await res.text();
-          if (ct.includes("application/json")) {
-            try {
-              const parsed = JSON.parse(bodyText);
-              bodyText = JSON.stringify(parsed);
-            } catch {}
-          }
-        } catch (readErr) {
-          bodyText = `(failed to read response body: ${String(readErr)})`;
-        }
         const maskedKey = SUPA_KEY ? `${SUPA_KEY.slice(0, 6)}...${SUPA_KEY.slice(-6)}` : null;
-        const errMsg = `HTTP ${res.status} ${res.statusText} - ${bodyText}`;
         console.error("Supabase REST error", {
           endpoint: "/api/contact",
           status: res.status,
-          body: bodyText,
           supabase_key_preview: maskedKey,
         });
-        throw new Error(errMsg);
+        throw new Error(`HTTP ${res.status} ${res.statusText}`);
       }
 
       ((window as any).Swal || (window as any).swal)?.fire({
